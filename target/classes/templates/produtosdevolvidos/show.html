@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+  <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_produtodevolvido})}|">Show ProdutoDevolvido - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content" data-th-object="${produtoDevolvido}">
+        <div class="container-fluid content">
+
+          <!-- CONTENT -->
+          <h1 data-th-text="#{label_show_entity(#{label_produtodevolvido})}">Show ProdutoDevolvido</h1>
+
+            <div id="mainEntityFieldSet">
+              <h2 data-th-text="#{label_data_entity(#{label_produtodevolvido})}">ProdutoDevolvido data</h2>
+              <ul class="list-unstyled" id="containerFields">
+                <div class="block-item">
+                  <div class="row">
+                   <div class=" col-md-6"><h2> </h2></div>
+                    <div class=" col-md-12">
+       
+	       	    <div class="col-md-6">
+		                  <li id="produtodevolvido-notafiscalorigem-field" data-z="c57cd042">
+		            	      <strong data-th-text="#{label_produtodevolvido_notafiscalorigem}">notaFiscalOrigem</strong>
+		                    <span data-th-text="*{{notaFiscalOrigem}}">notaFiscalOrigemValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="produtodevolvido-quantidade-field" data-z="a7995c62">
+		            	      <strong data-th-text="#{label_produtodevolvido_quantidade}">quantidade</strong>
+		                    <span data-th-text="*{{quantidade}}">quantidadeValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="produtodevolvido-descricao-field" data-z="5812125c">
+		            	      <strong data-th-text="#{label_produtodevolvido_descricao}">descricao</strong>
+		                    <span data-th-text="*{{descricao}}">descricaoValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="produtodevolvido-referencia-field" data-z="7c81fea2">
+		            	      <strong data-th-text="#{label_produtodevolvido_referencia}">referencia</strong>
+		                    <span data-th-text="*{{referencia}}">referenciaValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="produtodevolvido-notafiscaldevolucao-field" data-z="14e1febc">
+		            	      <strong data-th-text="#{label_produtodevolvido_notafiscaldevolucao}">notaFiscalDevolucao</strong>
+		                    <span data-th-text="*{{notaFiscalDevolucao}}">notaFiscalDevolucaoValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="produtodevolvido-viagem-field" data-z="1c2bc242">
+		            	      <strong data-th-text="#{label_produtodevolvido_viagem}">viagem</strong>
+		                    <span data-th-text="*{{viagem}}">viagemValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="produtodevolvido-createddate-field" data-z="8fd1559c">
+		            	      <strong data-th-text="#{label_produtodevolvido_createddate}">createdDate</strong>
+		                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="produtodevolvido-createdby-field" data-z="20a5ffbc">
+		            	      <strong data-th-text="#{label_produtodevolvido_createdby}">createdBy</strong>
+		                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="produtodevolvido-modifieddate-field" data-z="d8558962">
+		            	      <strong data-th-text="#{label_produtodevolvido_modifieddate}">modifiedDate</strong>
+		                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="produtodevolvido-modifiedby-field" data-z="1a106d02">
+		            	      <strong data-th-text="#{label_produtodevolvido_modifiedby}">modifiedBy</strong>
+		                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+		         	        </li>
+	            </div> 	
+                  </div>
+                </div>
+              </div>
+              </ul>
+            </div>
+          <div class="clearfix">
+            <div class="pull-right">
+             <a id="ProdutoDevolvido_edit" href="edit.html" class="btn btn-primary" data-th-title="#{label_goEdit}" data-th-href="${@linkBuilder.of('ProdutosDevolvidosItemThymeleafController').to('editForm').with('produtoDevolvido', produtoDevolvido.id)}" data-th-text="#{label_edit}">Edit</a>
+            </div>
+                  <div class="pull-left">
+					              <a onclick="history.go(-1)" class="btn btn-default" data-th-title="#{label_goBack}">
+					                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					                 <span data-th-text="#{label_back}">Back</span>
+					              </a>
+							</div>
+					<!--
+            <div class="pull-left">
+              <a id="ProdutoDevolvido_list" href="list.html" class="btn btn-default"
+                 data-th-title="#{label_goBack}"
+  	             data-th-href="${@linkBuilder.of('ProdutosDevolvidosCollectionThymeleafController').to('list')}">
+  	             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  	             <span data-th-text="#{label_back}">Back</span>
+  	          </a>
+            </div>
+                  -->
+          </div>
+
+	        </div>
+	        
+	        
+       
+       
+        </section></div>
+
+      
+      <!-- /CONTENT -->
+  
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

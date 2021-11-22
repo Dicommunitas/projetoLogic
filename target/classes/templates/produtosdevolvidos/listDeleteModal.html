@@ -1,0 +1,24 @@
+<!--TABLE-->
+<div class="table-responsive" id="containerFields" data-th-fragment="produtodevolvido-entityModalConfirmBody" data-th-with="collectionLink=${@linkBuilder.of('ProdutosDevolvidosCollectionThymeleafController')},itemLink=${@linkBuilder.of('ProdutosDevolvidosItemThymeleafController')}">
+    <table id="produtodevolvido-entity-table-item-to-remove" data-data-load-url="${collectionLink.to('datatablesByIdsIn')}">
+      <thead>
+        <tr>
+          <th data-data="notaFiscalOrigem" data-th-text="#{label_produtodevolvido_notafiscalorigem}">notaFiscalOrigem</th>
+          <th data-data="quantidade" data-th-text="#{label_produtodevolvido_quantidade}">quantidade</th>
+          <th data-data="descricao" data-th-text="#{label_produtodevolvido_descricao}">descricao</th>
+          <th data-data="referencia" data-th-text="#{label_produtodevolvido_referencia}">referencia</th>
+          <th data-data="notaFiscalDevolucao" data-th-text="#{label_produtodevolvido_notafiscaldevolucao}">notaFiscalDevolucao</th>
+        </tr>
+      </thead>
+      <tbody data-th-remove="all">
+        <tr>
+          <td>notaFiscalOrigem</td>
+          <td>quantidade</td>
+          <td>descricao</td>
+          <td>referencia</td>
+          <td>notaFiscalDevolucao</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<!-- /TABLE -->

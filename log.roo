@@ -1,0 +1,1106 @@
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 04:45:47
+project setup --topLevelPackage br.com.projetoLogic --projectName projetoLogic
+jpa setup --provider HIBERNATE --database MYSQL --userName root --password root --databaseName DiegoProjetoLogic
+enum type --class ~.model.reference.Status
+enum constant --name PENDENTE 
+enum constant --name AUTORIZADO
+enum constant --name NEGADO
+enum constant --name NA
+enum type --class ~.model.reference.TipoVeiculo
+enum constant --name CAVALO
+enum constant --name CARRETA
+enum type --class ~.model.reference.Cidade
+enum constant --name CIDADE1
+enum constant --name CIDADE2
+enum constant --name CIDADE3
+enum constant --name CIDADE4
+enum type --class ~.model.reference.StatusDevolucao
+enum constant --name COM
+enum constant --name SEM
+entity jpa --class ~.model.Embarcador --plural Embarcadores --entityFormatExpression "#{razaoSocial} (#{cnpj})"
+entity jpa --class ~.model.MotivoNegativaDiaria --plural MotivosNegativasDiarias --entityFormatExpression "#{descricao}"
+entity jpa --class ~.model.ModeloConjunto --plural ModelosConjuntos --entityFormatExpression "#{descricao}"
+entity jpa --class ~.model.MotivoNegativaDescarga --plural MotivosNegativasDescargas --entityFormatExpression "#{descricao}"
+entity jpa --class ~.model.MotivoPerdaAgenda --plural MotivosPerdasAgendas --entityFormatExpression "#{descricao}"
+entity jpa --class ~.model.Contrato --plural Contratos --entityFormatExpression "#{contratante} (#{vigenciaInicio} - #{vigenciaFim})"
+entity jpa --class ~.model.ModeloVeiculo --plural ModelosVeiculos --entityFormatExpression "#{descricao}"
+entity jpa --class ~.model.Viagem --plural Viagens --entityFormatExpression "#{destino}"
+entity jpa --class ~.model.Veiculo --plural Veiculos --entityFormatExpression "#{tipo} - #{placa} (#{proprietario})"
+entity jpa --class ~.model.Motorista --plural Motoristas --entityFormatExpression "#{nome} - #{cpf}"
+entity jpa --class ~.model.Cliente 
+entity jpa --class ~.model.ProdutoDevolvido --plural ProdutosDevolvidos
+entity jpa --class ~.model.Usuario --plural Usuarios
+entity jpa --class ~.model.Regra --plural Regras --entityFormatExpression "#{nomeRegra}" 
+focus --class ~.model.Embarcador
+field string --fieldName cnpj --notNull --unique --regexp "\d{3}\.\d{3}\.\d{3}\/\d{4}\-\d{2}"
+field string --fieldName razaoSocial --notNull --sizeMin 3 --sizeMax 30
+field string --fieldName endereco --notNull
+field string --fieldName telefone --notNull --regexp "\d{4}|^(\(0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d\) ?|0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d[ .-]?)?(9|9[ .-])?[2-9]\d{3}[ .-]?\d{4}"
+field set --fieldName viagem --type ~.model.Viagem
+focus --class ~.model.MotivoNegativaDiaria
+field string --fieldName descricao --notNull --sizeMin 3  --sizeMax 30
+field set --fieldName viagem --type ~.model.Viagem 
+focus --class ~.model.ModeloConjunto
+field string --fieldName descricao --notNull --sizeMin 3  --sizeMax 30
+field set --fieldName veiculo --type ~.model.Veiculo 
+focus --class ~.model.MotivoNegativaDescarga
+field string --fieldName descricao --notNull --sizeMin 3  --sizeMax 30
+field set --fieldName viagem --type ~.model.Viagem 
+focus --class ~.model.MotivoPerdaAgenda
+field string --fieldName descricao --notNull --sizeMin 3  --sizeMax 30
+field set --fieldName viagem --type ~.model.Viagem
+focus --class ~.model.Contrato
+// script --file /home/diego/Downloads/log.roo
+focus --class ~.model.Embarcador
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 04:56:20
+backup
+backup
+repository jpa --all --package ~.repository
+service --all --apiPackage ~.service.api --implPackage ~.service.impl
+web mvc setup
+web mvc view setup --type THYMELEAF
+web mvc controller --all --package ~.controller.json --responseType JSON
+web mvc controller --all --package ~.controller.thymeleaf --responseType THYMELEAF
+property add --key spring.jpa.hibernate.ddl-auto --value update
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 06:01:41
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 06:30:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 06:56:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 06:57:23
+backup
+focus --class ~.model.Viagem
+web mvc detail --entity ~.model.Viagem --field produtosDevolvidos --responseType THYMELEAF --package br.com.projetologic.controller.thymeleaf --views show
+focus --class ~.model.Usuario
+web mvc detail --entity ~.model.Usuario --field acessos --package br.com.projetologic.controller.thymeleaf --responseType THYMELEAF --views list,show
+backup
+web mvc templates setup --type THYMELEAF 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 08:30:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 08:30:58
+web mvc language --code br --useAsDefault 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 08:32:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 08:34:42
+web mvc templates setup --type THYMELEAF 
+backup
+backup
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 08:41:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 09:42:51
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 09:50:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 09:50:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 10:00:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 10:00:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 10:08:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 10:09:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 10:10:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 10:12:47
+backup
+web mvc templates setup --type THYMELEAF 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 10:25:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 10:25:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 10:33:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 10:34:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 10:43:08
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 10:43:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 10:50:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 10:50:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 11:05:51
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 11:06:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 11:17:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 11:17:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 11:18:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 11:18:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 11:23:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 11:23:33
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-12 11:24:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 18:08:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 18:10:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 18:10:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 18:11:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 18:12:08
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 18:12:19
+!g felix:install file:///home/diego/Spring/spring-roo-2.0.0.RELEASE/org.springframework.roo.addon.web.mvc.i18n.br-0.1.0.BUILD-SNAPSHOT.jar
+!g felix:start file:///home/diego/Spring/spring-roo-2.0.0.RELEASE/org.springframework.roo.addon.web.mvc.i18n.br-0.1.0.BUILD-SNAPSHOT.jar
+addon install url --url file:///home/diego/Spring/spring-roo-2.0.0.RELEASE/org.springframework.roo.addon.web.mvc.i18n.br-0.1.0.BUILD-SNAPSHOT.jar
+web mvc language --code br --useAsDefault 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 18:18:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 18:18:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 18:22:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 18:22:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 18:23:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 18:23:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 18:24:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 18:25:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 18:27:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 18:27:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 18:30:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 18:30:33
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 19:17:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 19:17:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 19:17:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 19:17:54
+backup
+push-in --class ~.web.MainController --method index(Model) 
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 19:55:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 19:56:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 19:57:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 19:59:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 19:59:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-13 20:00:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-13 20:00:57
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-15 04:03:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-15 16:51:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-15 20:05:59
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-16 09:31:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-17 16:41:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-17 16:47:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-17 16:47:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-17 16:51:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-17 16:51:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-17 16:59:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-17 16:59:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-17 17:09:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-17 17:14:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-17 17:23:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-17 17:23:20
+focus --class ~.model.Viagem 
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-18 18:36:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-18 18:38:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-22 16:00:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-22 16:01:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-24 15:21:05
+backup
+push-in --class ~.service.impl.ViagemServiceImpl --method validate(Viagem) 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-24 15:33:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-24 15:34:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-24 15:34:51
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-24 15:35:08
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-24 15:35:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-24 15:35:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-24 15:55:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-24 20:22:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-24 20:25:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-24 20:25:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-24 20:31:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-24 20:31:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-24 20:36:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-24 20:36:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-24 20:54:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-24 20:54:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-24 20:57:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-24 20:57:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-27 21:07:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-27 21:13:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-27 21:13:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-27 21:14:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-27 21:14:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-27 21:16:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-27 21:16:39
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-27 22:45:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-27 22:45:22
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-27 22:50:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-27 22:51:06
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-27 23:46:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-27 23:46:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-27 23:46:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-27 23:46:51
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-27 23:59:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-27 23:59:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 00:02:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 00:03:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 01:06:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 01:07:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 01:24:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 01:32:03
+web mvc language --code pt --useAsDefault 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 01:37:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 01:38:42
+!g felix:install file:///home/diego/Downloads/target/com.foo-0.1.0.BUILD-SNAPSHOT.jar
+!g felix:start file:///home/diego/Downloads/target/com.foo-0.1.0.BUILD-SNAPSHOT.jar
+addon install url --url file:///home/diego/Downloads/target/com.foo-0.1.0.BUILD-SNAPSHOT.jar
+web mvc language --code pt --useAsDefault 
+web mvc language --code br --useAsDefault 
+web mvc language --code pt --useAsDefault 
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 01:50:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 01:50:30
+backup
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 02:06:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 02:07:02
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 10:52:53
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 10:53:06
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 12:35:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 12:35:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 12:39:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 12:39:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 12:42:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 12:42:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 12:43:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 12:43:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 12:44:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 12:44:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 13:21:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 13:37:51
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 19:07:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 19:08:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 19:13:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 19:13:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 19:17:59
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 19:18:08
+backup
+backup
+push-in --class ~.model.Viagem --method getPerdeuAgenda() 
+push-in --class ~.model.Viagem --method getPerdeuAgenda() 
+push-in --class ~.model.Viagem --method getPerdeuAgenda() --force 
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-28 20:51:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-28 20:51:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-06-29 21:07:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-01 17:37:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-01 17:37:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-01 17:40:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-01 17:43:53
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-01 17:44:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-01 17:46:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-01 17:46:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-01 17:55:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-05 05:03:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-05 05:06:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-05 05:07:08
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-05 05:10:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-05 05:10:59
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-05 05:16:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-05 05:17:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-05 05:27:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-05 05:27:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-05 05:31:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-05 05:32:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-05 05:41:00
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-05 05:41:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-05 13:10:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-05 18:25:29
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-05 18:26:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 16:50:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 17:05:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 17:05:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 18:05:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 18:05:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 18:24:51
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 18:25:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 18:55:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 18:56:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 18:57:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 18:57:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 19:03:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 19:03:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 19:54:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 19:54:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 19:59:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 19:59:59
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:01:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:02:06
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:03:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:03:51
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:09:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:09:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:15:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:15:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:23:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:23:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:25:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:26:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:32:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:32:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:36:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:36:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:38:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:38:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:39:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:39:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:40:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:40:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:42:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:43:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:43:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:43:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:45:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:45:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:48:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:48:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:50:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:50:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:52:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:52:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:53:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:53:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:57:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:57:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:58:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 20:58:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 20:59:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 21:00:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 21:01:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 21:01:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 21:02:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 21:02:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 21:04:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 21:04:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 21:05:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 21:05:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 21:06:59
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 21:07:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 21:08:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 21:08:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 21:10:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 21:11:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 21:11:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 21:11:33
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-06 21:13:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-06 21:14:04
+backup
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 00:05:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 00:05:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 00:17:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 00:17:41
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 00:18:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 00:18:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 00:19:00
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 00:19:51
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 00:29:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 00:29:53
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 00:33:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 00:33:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 00:36:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 00:36:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 00:38:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 00:38:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 04:45:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 05:17:51
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 05:36:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 05:36:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 05:37:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 05:37:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 05:52:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 05:52:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 05:56:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 05:56:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 06:21:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 06:21:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 06:32:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 06:32:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 06:35:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 06:35:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 06:41:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 06:41:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 06:42:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 06:42:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 06:44:59
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 06:45:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 06:47:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 06:47:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 06:57:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 06:58:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 06:58:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 06:59:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 07:01:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 07:01:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 07:03:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 07:03:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 07:06:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 07:06:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 07:10:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 07:10:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 08:09:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 08:09:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 09:17:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 09:18:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 09:25:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 09:25:32
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 09:29:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 11:47:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 11:51:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 13:25:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 13:30:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 13:30:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 13:33:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 13:33:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 13:47:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 13:47:26
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 15:22:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 15:22:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 15:28:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 15:28:41
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 15:33:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 15:33:29
+backup
+focus --class ~.model.Embarcador
+web mvc detail --entity ~.model.Embarcador --field contratos --responseType THYMELEAF --package br.com.projetologic.controller.thymeleaf.detail.embarcador --views show 
+web mvc detail --entity ~.model.Embarcador --field contratos --responseType THYMELEAF --package br.com.projetologic.controller.thymeleaf --views show 
+web mvc detail --entity ~.model.Embarcador --field viagens --responseType THYMELEAF --package br.com.projetologic.controller.thymeleaf --views show 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 16:45:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 16:46:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 16:51:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 16:51:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 16:58:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 16:58:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 17:01:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 17:02:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 17:10:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 17:10:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 17:12:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 17:12:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 17:13:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 17:13:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 17:14:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 17:15:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 17:16:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 17:16:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 17:18:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 17:18:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 17:28:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-07 17:28:25
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-07 17:31:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-08 22:13:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-08 23:10:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 19:54:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 20:03:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 20:03:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 20:06:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 20:06:33
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 20:24:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 20:24:41
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 20:28:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 20:29:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 22:21:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 22:21:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 22:38:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 22:39:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 22:41:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 22:41:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 22:42:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 22:42:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 23:07:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 23:08:06
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 23:21:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 23:22:08
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 23:28:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 23:28:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 23:37:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 23:37:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 23:54:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-14 23:55:39
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-14 23:56:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-15 19:55:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-15 19:56:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-15 19:56:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-15 20:11:06
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-15 20:11:17
+backup
+push-in --class ~.model.Viagem --method getNumeroDiarias() 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-15 20:36:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-15 20:36:25
+push-in --class ~.model.Viagem --method getNumeroDiarias() 
+push-in --class ~.model.Viagem --method getNumeroDiarias() --force
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-15 22:48:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-15 22:48:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-15 22:49:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 01:50:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 01:51:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 01:51:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 01:57:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 01:58:00
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 14:30:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 14:30:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 15:51:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 15:51:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 15:52:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 15:53:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 16:49:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 16:49:59
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 18:03:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 18:03:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 18:26:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 18:26:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 18:31:08
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 18:31:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 19:55:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-16 19:55:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-16 21:52:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-18 04:39:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-18 06:03:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-18 06:03:58
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-18 06:05:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-18 09:35:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-18 09:38:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-18 09:39:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-18 11:43:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-18 11:43:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-18 11:48:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-18 11:48:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-18 13:05:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-18 13:05:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-18 13:12:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-18 13:12:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-18 13:32:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-18 13:32:43
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-18 13:33:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-18 13:34:04
+focus --class ~.model.Viagem 
+finder add --entity ~.model.Viagem --name findByInicioRealAfter 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 11:03:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 13:30:20
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 13:32:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 13:33:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 13:34:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 13:34:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 13:43:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 13:44:16
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 13:57:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 13:57:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 14:00:33
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 14:00:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 14:04:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 14:04:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 14:08:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 14:08:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 14:13:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 14:13:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 14:14:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 14:14:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 14:16:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 14:16:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 14:19:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 14:19:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 14:27:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 14:27:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 14:32:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 14:32:33
+backup
+focus --class ~.model.Embarcador 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 16:04:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 16:04:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 16:08:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 16:08:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 17:35:59
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 17:36:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 17:37:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 17:37:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 17:39:41
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 17:39:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 17:44:53
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 17:45:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 17:47:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 17:47:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 17:48:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 17:48:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 17:54:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 17:54:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 17:54:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 17:54:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 17:55:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 17:55:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 17:58:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 17:58:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:01:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:01:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:02:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:02:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:04:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:05:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:09:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:09:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:12:51
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:13:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:14:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:14:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:19:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:19:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:25:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:25:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:28:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:28:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:30:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:30:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:32:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:32:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:32:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:33:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:38:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:38:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:42:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:42:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:44:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:44:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 18:52:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 18:53:08
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:04:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:04:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:06:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:06:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:08:08
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:08:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:19:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:19:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:21:41
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:21:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:23:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:23:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:26:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:26:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:35:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:36:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:45:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:45:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:53:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:53:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:55:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:55:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:56:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:56:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 19:58:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 19:58:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:02:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:02:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:12:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:12:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:16:06
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:16:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:17:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:17:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:18:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:18:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:18:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:18:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:19:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:19:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:21:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:21:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:23:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:23:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:24:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:24:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:24:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:24:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:49:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:49:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:51:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:51:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:52:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:52:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:56:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:56:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:57:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:57:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 20:58:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 20:58:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:00:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:00:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:01:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:01:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:04:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:04:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:09:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:09:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:10:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:10:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:12:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:12:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:12:53
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:13:00
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:13:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:14:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:15:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:15:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:16:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:16:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:18:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:18:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:19:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:19:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:20:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:20:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:24:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:24:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:24:53
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:25:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:47:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:47:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:55:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:55:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 21:57:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 21:58:06
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:01:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:01:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:02:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:02:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:03:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:03:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:04:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:04:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:05:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:05:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:06:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:06:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:08:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:08:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:09:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:09:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:10:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:10:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:11:41
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:11:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:12:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:12:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:14:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:14:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:15:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:15:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:17:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:17:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:19:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:19:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:20:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:20:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:25:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:26:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:35:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:35:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-19 22:59:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-19 22:59:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-20 14:34:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-20 14:34:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-20 14:50:41
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-20 15:00:26
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-20 16:51:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-20 16:52:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-20 16:54:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-20 16:54:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 09:36:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 09:36:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 09:39:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 09:39:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 09:40:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 09:40:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 09:42:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 09:42:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 09:42:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 09:42:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 09:52:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 09:52:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 09:54:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 09:54:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 10:00:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 10:00:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 10:04:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 10:04:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 10:05:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 10:05:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 10:06:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 10:06:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 10:17:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 10:17:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 10:19:08
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 10:19:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 10:38:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 10:38:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 14:42:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 14:42:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 14:43:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 14:44:00
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 14:47:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 14:47:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 14:55:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 14:55:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 18:20:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 18:20:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 18:21:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 18:22:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 18:57:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-21 18:57:27
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-21 19:21:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-29 04:04:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-29 04:14:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-29 04:14:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-29 04:23:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-29 04:23:58
+backup
+finder add --entity ~.model.Contrato --name findByContratanteAndVigenciaFimAfter 
+finder add --entity ~.model.Contrato --name findByContratanteAndVigenciaFimAfterAndVigenciaInicioBefore 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-29 09:04:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-29 09:04:45
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-29 10:11:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-07-29 10:11:37
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-07-29 11:24:08
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 15:29:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-04 18:26:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 18:26:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-04 19:03:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 19:03:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-04 19:06:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 19:06:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-04 19:11:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 19:11:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-04 19:17:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 19:17:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-04 19:20:07
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 19:20:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-04 19:21:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 19:21:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-04 19:22:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 19:22:42
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-04 23:30:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 23:31:06
+finder add --entity ~.model.Viagem --name findByDevolucaoEquals 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-04 23:59:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-04 23:59:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-05 00:19:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-05 00:20:00
+backup
+finder add --entity ~.model.Viagem --name findByFimViagemNull 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 20:12:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 20:12:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 20:51:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 21:08:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 21:10:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 21:19:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 21:23:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 21:30:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 21:32:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 21:39:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 21:42:25
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 22:23:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 22:28:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 22:29:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 22:36:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 22:36:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 22:38:51
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 22:41:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 22:44:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 22:58:39
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-06 23:07:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-06 23:07:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 19:29:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 19:29:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 19:32:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 19:32:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 19:47:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 19:47:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 19:52:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 19:53:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 19:55:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 19:55:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 20:27:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 20:27:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 21:47:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 21:47:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 21:53:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 21:53:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 21:56:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 21:56:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 22:01:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 22:01:59
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-07 22:36:16
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-07 22:36:32
+backup
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-08 01:31:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-08 01:32:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-08 01:36:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-08 01:36:33
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-08 13:48:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 03:58:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 03:59:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 04:08:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 04:13:51
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 04:14:04
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 04:49:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 04:49:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 06:04:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 06:26:57
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 06:29:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 06:30:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 07:10:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 07:10:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 07:46:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 09:14:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 09:55:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 09:56:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 10:01:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 10:01:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 10:11:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 10:11:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 10:12:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 10:12:43
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 10:18:10
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 10:18:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 10:21:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 10:22:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 18:46:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 18:46:59
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 19:11:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-12 19:11:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-12 21:06:40
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-13 04:58:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-13 05:05:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-13 05:06:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-13 05:10:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-13 05:11:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-13 05:13:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-13 05:14:15
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-13 05:43:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-13 12:53:00
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-13 12:55:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-13 12:55:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-13 12:57:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-13 12:57:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-13 14:32:14
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-14 19:40:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-14 19:43:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-14 20:31:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-14 20:32:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-08-16 12:35:35
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-08-16 17:40:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-01 13:35:15
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-01 13:41:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-06 13:34:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-06 13:43:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-06 13:43:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-06 14:35:00
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-06 14:35:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-06 21:22:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-11 12:24:55
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-11 12:26:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-11 12:26:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-11 12:42:38
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-11 12:42:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-11 13:36:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-11 13:36:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-11 13:37:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-11 13:37:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-11 13:39:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-11 13:39:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-11 15:26:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-11 15:27:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-11 15:58:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-11 17:40:03
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-11 18:18:53
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-11 18:19:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-12 12:03:00
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-12 12:03:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-12 12:15:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-12 12:16:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-12 12:53:52
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-12 12:54:02
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-12 14:46:44
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-12 14:46:56
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-12 14:48:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-12 18:09:00
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-12 18:35:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-12 18:35:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-12 18:44:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-12 18:44:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-12 23:07:05
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-30 11:23:42
+backup
+finder add --entity ~.model.Cliente --name findFirstByCnpj 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-30 12:11:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-30 12:12:47
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-30 12:19:42
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-30 12:19:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-30 12:32:12
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-30 12:32:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-30 12:33:01
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-30 12:33:54
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-30 12:38:46
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-30 12:38:55
+// [failed] finder add --entity ~.model.Cliente --name findCnpj
+finder add --entity ~.model.Cliente --name findFirstByCnpjEquals
+finder add --entity ~.model.Cliente --name findByCnpjEquals 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-30 12:47:41
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-30 12:47:49
+finder add --entity ~.model.Cliente --name findFirstByCnpjEquals
+// [failed] finder add --entity ~.model.Cliente --name findOneForCnpj
+finder add --entity ~.model.Cliente --name findFirstByCnpjEqualsIgnoreCase 
+finder add --entity ~.model.Cliente --name findByCnpjEquals 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-30 13:29:11
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-30 13:30:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-30 13:35:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-30 13:35:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-09-30 13:43:04
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-09-30 13:43:12
+finder add --entity ~.model.Embarcador --name findByCnpjEquals 
+finder add --entity ~.model.Usuario --name findByCpfEquals 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-10-01 19:00:19
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-10-01 19:00:28
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-10-01 19:07:27
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-10-01 19:07:36
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-10-01 19:15:20
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-10-01 19:15:30
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-10-01 19:17:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-10-01 19:17:33
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-10-01 19:27:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-10-01 19:27:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-10-01 19:34:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-10-01 19:34:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-10-01 19:37:22
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-10-01 19:37:31
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-10-01 21:10:21
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-12-18 03:15:22
+backup
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-12-18 03:31:15
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-12-18 03:31:32
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-12-18 03:33:50
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-12-18 03:34:00
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-12-18 03:37:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-12-18 03:37:48
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-12-18 03:47:09
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-12-18 03:47:18
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-12-18 03:48:17
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-12-18 03:48:29
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-12-18 03:49:13
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-12-18 03:49:23
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-12-18 03:57:49
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-12-18 03:58:00
+web mvc controller --entity ~.model.Cidade --package br.com.projetologic.controller.json --responseType JSON 
+// [failed] repository jpa --entity ~.model.Cidade --package ~.repository
+repository jpa --all --package ~.repository
+service --all --apiPackage ~.service.api --implPackage ~.service.impl
+web mvc controller --entity ~.model.Cidade --package br.com.projetologic.controller.json --responseType JSON 
+web mvc controller --entity ~.model.Cidade --package br.com.projetologic.controller.thymeleaf --responseType THYMELEAF 
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-12-18 04:22:24
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-12-18 04:22:34
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-12-18 04:23:26
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-12-18 04:23:37
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2018-12-18 05:44:56
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2019-12-27 03:46:58
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log closed at 2019-12-27 06:58:17

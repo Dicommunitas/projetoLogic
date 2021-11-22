@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+  <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_motivoperdaagenda})}|">Show MotivoPerdaAgenda - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content" data-th-object="${motivoPerdaAgenda}">
+        <div class="container-fluid content">
+
+          <!-- CONTENT -->
+          <h1 data-th-text="#{label_show_entity(#{label_motivoperdaagenda})}">Show MotivoPerdaAgenda</h1>
+
+            <div id="mainEntityFieldSet">
+              <h2 data-th-text="#{label_data_entity(#{label_motivoperdaagenda})}">MotivoPerdaAgenda data</h2>
+              <ul class="list-unstyled" id="containerFields">
+                <div class="block-item">
+                  <div class="row">
+                   <div class=" col-md-6"><h2> </h2></div>
+                    <div class=" col-md-12">
+       
+	       	    <div class="col-md-6">
+		                  <li id="motivoperdaagenda-descricao-field" data-z="9d78b433">
+		            	      <strong data-th-text="#{label_motivoperdaagenda_descricao}">descricao</strong>
+		                    <span data-th-text="*{{descricao}}">descricaoValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="motivoperdaagenda-createddate-field" data-z="1616ddb3">
+		            	      <strong data-th-text="#{label_motivoperdaagenda_createddate}">createdDate</strong>
+		                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="motivoperdaagenda-createdby-field" data-z="660ca193">
+		            	      <strong data-th-text="#{label_motivoperdaagenda_createdby}">createdBy</strong>
+		                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="motivoperdaagenda-modifieddate-field" data-z="1ac1042b">
+		            	      <strong data-th-text="#{label_motivoperdaagenda_modifieddate}">modifiedDate</strong>
+		                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="motivoperdaagenda-modifiedby-field" data-z="817e060b">
+		            	      <strong data-th-text="#{label_motivoperdaagenda_modifiedby}">modifiedBy</strong>
+		                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+		         	        </li>
+	            </div> 	
+                  </div>
+                </div>
+              </div>
+              </ul>
+            </div>
+          <div class="clearfix">
+            <div class="pull-right">
+             <a id="MotivoPerdaAgenda_edit" href="edit.html" class="btn btn-primary" data-th-title="#{label_goEdit}" data-th-href="${@linkBuilder.of('MotivosPerdasAgendasItemThymeleafController').to('editForm').with('motivoPerdaAgenda', motivoPerdaAgenda.id)}" data-th-text="#{label_edit}">Edit</a>
+            </div>
+                  <div class="pull-left">
+					              <a onclick="history.go(-1)" class="btn btn-default" data-th-title="#{label_goBack}">
+					                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					                 <span data-th-text="#{label_back}">Back</span>
+					              </a>
+							</div>
+					<!--
+            <div class="pull-left">
+              <a id="MotivoPerdaAgenda_list" href="list.html" class="btn btn-default"
+                 data-th-title="#{label_goBack}"
+  	             data-th-href="${@linkBuilder.of('MotivosPerdasAgendasCollectionThymeleafController').to('list')}">
+  	             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  	             <span data-th-text="#{label_back}">Back</span>
+  	          </a>
+            </div>
+                  -->
+          </div>
+
+	        </div>
+	        
+	        
+       
+       
+        </section></div>
+
+      
+      <!-- /CONTENT -->
+  
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

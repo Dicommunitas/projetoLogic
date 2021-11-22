@@ -1,0 +1,24 @@
+<!--TABLE-->
+<div class="table-responsive" id="containerFields" data-th-fragment="viagens-detailModalConfirmBody" data-th-with="collectionLink=${@linkBuilder.of('EmbarcadoresItemViagensThymeleafController')}">
+    <table id="viagens-detail-table-item-to-remove" data-parent-table="embarcador-entity-table" data-data-parent-id="${embarcador != null ? embarcador.id : ''}" data-data-load-url="${collectionLink.to('datatablesByIdsIn').with('embarcador', '_PARENTID_')}">
+      <thead>
+        <tr>
+              <th data-data="embarcador" data-th-text="#{label_embarcador_viagens_embarcador}">embarcador</th>
+              <th data-data="cidadeOrigem" data-th-text="#{label_embarcador_viagens_cidadeorigem}">cidadeOrigem</th>
+              <th data-data="dataLancamento" data-th-text="#{label_embarcador_viagens_datalancamento}">dataLancamento</th>
+              <th data-data="identificacaoTransporte" data-th-text="#{label_embarcador_viagens_identificacaotransporte}">identificacaoTransporte</th>
+              <th data-data="destino" data-th-text="#{label_embarcador_viagens_destino}">destino</th>
+        </tr>
+      </thead>
+      <tbody data-th-remove="all">
+        <tr>
+              <td>embarcador</td>
+              <td>cidadeOrigem</td>
+              <td>dataLancamento</td>
+              <td>identificacaoTransporte</td>
+              <td>destino</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<!-- /TABLE -->

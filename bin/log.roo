@@ -1,0 +1,54 @@
+// Spring Roo 2.0.0.RELEASE [rev 4a2e9f1] log opened at 2018-06-12 04:45:47
+project setup --topLevelPackage br.com.projetoLogic --projectName projetoLogic
+jpa setup --provider HIBERNATE --database MYSQL --userName root --password root --databaseName DiegoProjetoLogic
+enum type --class ~.model.reference.Status
+enum constant --name PENDENTE 
+enum constant --name AUTORIZADO
+enum constant --name NEGADO
+enum constant --name NA
+enum type --class ~.model.reference.TipoVeiculo
+enum constant --name CAVALO
+enum constant --name CARRETA
+enum type --class ~.model.reference.Cidade
+enum constant --name CIDADE1
+enum constant --name CIDADE2
+enum constant --name CIDADE3
+enum constant --name CIDADE4
+enum type --class ~.model.reference.StatusDevolucao
+enum constant --name COM
+enum constant --name SEM
+entity jpa --class ~.model.Embarcador --plural Embarcadores --entityFormatExpression "#{razaoSocial} (#{cnpj})"
+entity jpa --class ~.model.MotivoNegativaDiaria --plural MotivosNegativasDiarias --entityFormatExpression "#{descricao}"
+entity jpa --class ~.model.ModeloConjunto --plural ModelosConjuntos --entityFormatExpression "#{descricao}"
+entity jpa --class ~.model.MotivoNegativaDescarga --plural MotivosNegativasDescargas --entityFormatExpression "#{descricao}"
+entity jpa --class ~.model.MotivoPerdaAgenda --plural MotivosPerdasAgendas --entityFormatExpression "#{descricao}"
+entity jpa --class ~.model.Contrato --plural Contratos --entityFormatExpression "#{contratante} (#{vigenciaInicio} - #{vigenciaFim})"
+entity jpa --class ~.model.ModeloVeiculo --plural ModelosVeiculos --entityFormatExpression "#{descricao}"
+entity jpa --class ~.model.Viagem --plural Viagens --entityFormatExpression "#{destino}"
+entity jpa --class ~.model.Veiculo --plural Veiculos --entityFormatExpression "#{tipo} - #{placa} (#{proprietario})"
+entity jpa --class ~.model.Motorista --plural Motoristas --entityFormatExpression "#{nome} - #{cpf}"
+entity jpa --class ~.model.Cliente 
+entity jpa --class ~.model.ProdutoDevolvido --plural ProdutosDevolvidos
+entity jpa --class ~.model.Usuario --plural Usuarios
+entity jpa --class ~.model.Regra --plural Regras --entityFormatExpression "#{nomeRegra}" 
+focus --class ~.model.Embarcador
+field string --fieldName cnpj --notNull --unique --regexp "\d{3}\.\d{3}\.\d{3}\/\d{4}\-\d{2}"
+field string --fieldName razaoSocial --notNull --sizeMin 3 --sizeMax 30
+field string --fieldName endereco --notNull
+field string --fieldName telefone --notNull --regexp "\d{4}|^(\(0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d\) ?|0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d[ .-]?)?(9|9[ .-])?[2-9]\d{3}[ .-]?\d{4}"
+field set --fieldName viagem --type ~.model.Viagem
+focus --class ~.model.MotivoNegativaDiaria
+field string --fieldName descricao --notNull --sizeMin 3  --sizeMax 30
+field set --fieldName viagem --type ~.model.Viagem 
+focus --class ~.model.ModeloConjunto
+field string --fieldName descricao --notNull --sizeMin 3  --sizeMax 30
+field set --fieldName veiculo --type ~.model.Veiculo 
+focus --class ~.model.MotivoNegativaDescarga
+field string --fieldName descricao --notNull --sizeMin 3  --sizeMax 30
+field set --fieldName viagem --type ~.model.Viagem 
+focus --class ~.model.MotivoPerdaAgenda
+field string --fieldName descricao --notNull --sizeMin 3  --sizeMax 30
+field set --fieldName viagem --type ~.model.Viagem
+focus --class ~.model.Contrato
+// script --file /home/diego/Downloads/log.roo
+focus --class ~.model.Embarcador

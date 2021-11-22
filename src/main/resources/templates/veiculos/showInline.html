@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_veiculo})}|">Show Veiculo - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${veiculo}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="veiculo-tipo-field" data-z="5701ffa4">
+            	      <strong data-th-text="#{label_veiculo_tipo}">tipo</strong>
+                    <span data-th-text="*{{tipo}}">tipoValue</span>
+         	        </li>
+                  <li id="veiculo-placa-field" data-z="b32e76da">
+            	      <strong data-th-text="#{label_veiculo_placa}">placa</strong>
+                    <span data-th-text="*{{placa}}">placaValue</span>
+         	        </li>
+                  <li id="veiculo-modeloveiculo-field" data-z="57b66fa">
+            	      <strong data-th-text="#{label_veiculo_modeloveiculo}">modeloVeiculo</strong>
+                    <span data-th-text="*{{modeloVeiculo}}">modeloVeiculoValue</span>
+         	        </li>
+                  <li id="veiculo-proprietario-field" data-z="bcbd8d24">
+            	      <strong data-th-text="#{label_veiculo_proprietario}">proprietario</strong>
+                    <span data-th-text="*{{proprietario}}">proprietarioValue</span>
+         	        </li>
+                  <li id="veiculo-ativo-field" data-z="8ead4d5a">
+            	      <strong data-th-text="#{label_veiculo_ativo}">ativo</strong>
+                    <span data-th-text="*{{ativo}}">ativoValue</span>
+         	        </li>
+                  <li id="veiculo-modeloconjunto-field" data-z="ef17fbc4">
+            	      <strong data-th-text="#{label_veiculo_modeloconjunto}">modeloConjunto</strong>
+                    <span data-th-text="*{{modeloConjunto}}">modeloConjuntoValue</span>
+         	        </li>
+                  <li id="veiculo-createddate-field" data-z="f389ac5a">
+            	      <strong data-th-text="#{label_veiculo_createddate}">createdDate</strong>
+                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+         	        </li>
+                  <li id="veiculo-createdby-field" data-z="4760edfa">
+            	      <strong data-th-text="#{label_veiculo_createdby}">createdBy</strong>
+                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+         	        </li>
+                  <li id="veiculo-modifieddate-field" data-z="eba80a64">
+            	      <strong data-th-text="#{label_veiculo_modifieddate}">modifiedDate</strong>
+                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+         	        </li>
+                  <li id="veiculo-modifiedby-field" data-z="cab34684">
+            	      <strong data-th-text="#{label_veiculo_modifiedby}">modifiedBy</strong>
+                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

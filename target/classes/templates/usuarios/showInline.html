@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_usuario})}|">Show Usuario - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${usuario}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="usuario-nome-field" data-z="e7aec6e3">
+            	      <strong data-th-text="#{label_usuario_nome}">nome</strong>
+                    <span data-th-text="*{{nome}}">nomeValue</span>
+         	        </li>
+                  <li id="usuario-login-field" data-z="a0928e1b">
+            	      <strong data-th-text="#{label_usuario_login}">login</strong>
+                    <span data-th-text="*{{login}}">loginValue</span>
+         	        </li>
+                  <li id="usuario-senha-field" data-z="d97e09b">
+            	      <strong data-th-text="#{label_usuario_senha}">senha</strong>
+                    <span data-th-text="*{{senha}}">senhaValue</span>
+         	        </li>
+                  <li id="usuario-confirmasenha-field" data-z="d3ec789b">
+            	      <strong data-th-text="#{label_usuario_confirmasenha}">confirmaSenha</strong>
+                    <span data-th-text="*{{confirmaSenha}}">confirmaSenhaValue</span>
+         	        </li>
+                  <li id="usuario-cpf-field" data-z="f1c0f1b">
+            	      <strong data-th-text="#{label_usuario_cpf}">cpf</strong>
+                    <span data-th-text="*{{cpf}}">cpfValue</span>
+         	        </li>
+                  <li id="usuario-modifiedby-field" data-z="eaa5323">
+            	      <strong data-th-text="#{label_usuario_modifiedby}">modifiedBy</strong>
+                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+         	        </li>
+                  <li id="usuario-createddate-field" data-z="2e74339b">
+            	      <strong data-th-text="#{label_usuario_createddate}">createdDate</strong>
+                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+         	        </li>
+                  <li id="usuario-createdby-field" data-z="5a16517b">
+            	      <strong data-th-text="#{label_usuario_createdby}">createdBy</strong>
+                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+         	        </li>
+                  <li id="usuario-modifieddate-field" data-z="e0e6b43">
+            	      <strong data-th-text="#{label_usuario_modifieddate}">modifiedDate</strong>
+                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

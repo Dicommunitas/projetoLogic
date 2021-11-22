@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-layout}">
+  <head id="head">
+
+    <title data-th-text="#{label_create_entity(#{label_contrato})}">
+      Create Contrato - Logic - SpringRoo Application</title>
+
+    <!-- DateTimePicker -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css" data-th-href="@{/webjars/datetimepicker/build/jquery.datetimepicker.min.css}" />
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!-- CONTAINER -->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content">
+        <div class="container-fluid content" data-th-with="collectionLink=${@linkBuilder.of('ContratosCollectionThymeleafController')}">
+
+          <h1 data-th-text="#{label_create_entity(#{label_contrato})}">Create Contrato</h1>
+
+          <!-- FORM -->
+          <form class="form-horizontal validate" method="POST" data-th-object="${contrato}" data-th-action="${collectionLink.to('create').with('contrato', contrato.id)}">
+
+            <fieldset id="containerFields">
+              <legend class="sr-only" data-th-text="#{label_data_entity(#{label_contrato})}">Contrato data </legend>
+                <div class="panel panel-default">
+                  <div class="row">
+                   <div class=" col-md-6"><h2> </h2></div>
+                    <div class=" col-md-12">
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="7b8a9b77" id="contrato-contratante-field" data-th-classappend="${#fields.hasErrors('contratante')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('EmbarcadoresCollectionThymeleafController')}">
+    <label for="contratante" class="col-md-6 control-label contratante" data-th-text="#{label_contrato_contratante}">Embarcador</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{contratante}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_contratante()">
+          <option data-th-unless="*{contratante} == null" data-th-value="*{contratante.id}" data-th-text="*{{contratante}}" selected="selected">Embarcador</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('contratante')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('contratante')}" aria-hidden="true"></span>
+      <span id="contratante-error" class="help-block" data-th-if="${#fields.hasErrors('contratante')}" data-th-errors="*{contratante}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="contrato-vigenciainicio-field" data-z="d0212be7" data-th-classappend="${#fields.hasErrors('vigenciaInicio')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="vigenciaInicio" class="col-md-6 control-label" data-th-text="#{label_contrato_vigenciainicio}">vigenciaInicio</label>
+  <div class="col-md-6">
+    <input id="vigenciaInicio" name="vigenciaInicio" data-th-value="*{{vigenciaInicio}}" type="text" class="form-control datetimepicker" placeholder="vigenciaInicio" data-th-placeholder="#{label_contrato_vigenciainicio}" data-th-attr="data-dateformat=${vigenciaInicio_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('vigenciaInicio')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('vigenciaInicio')}" aria-hidden="true"></span>
+     <span id="vigenciaInicio-error" class="help-block" data-th-if="${#fields.hasErrors('vigenciaInicio')}" data-th-errors="*{vigenciaInicio}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("vigenciaInicio").classList.remove('datetimepicker');
+		 	document.getElementById("vigenciaInicio").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="contrato-vigenciafim-field" data-z="436c5bf7" data-th-classappend="${#fields.hasErrors('vigenciaFim')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="vigenciaFim" class="col-md-6 control-label" data-th-text="#{label_contrato_vigenciafim}">vigenciaFim</label>
+  <div class="col-md-6">
+    <input id="vigenciaFim" name="vigenciaFim" data-th-value="*{{vigenciaFim}}" type="text" class="form-control datetimepicker" placeholder="vigenciaFim" data-th-placeholder="#{label_contrato_vigenciafim}" data-th-attr="data-dateformat=${vigenciaFim_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('vigenciaFim')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('vigenciaFim')}" aria-hidden="true"></span>
+     <span id="vigenciaFim-error" class="help-block" data-th-if="${#fields.hasErrors('vigenciaFim')}" data-th-errors="*{vigenciaFim}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("vigenciaFim").classList.remove('datetimepicker');
+		 	document.getElementById("vigenciaFim").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="f5d49b77" id="contrato-valordiaria-field" data-th-classappend="${#fields.hasErrors('valorDiaria')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="valorDiaria" class="col-md-6 control-label" data-th-text="#{label_contrato_valordiaria}">valorDiaria</label>
+  <div class="col-md-6">
+    <input id="valorDiaria" name="valorDiaria" data-th-value="*{{valorDiaria}}" type="text" class="form-control inputmask" placeholder="valorDiaria" data-th-placeholder="#{label_contrato_valordiaria}" data-toggle="tooltip" aria-describedby="valorDiariaStatus" data-inputmask-alias="numeric" data-inputmask-integerdigits="6" data-inputmask-digits="2" />
+      <span data-th-classappend="${#fields.hasErrors('valorDiaria')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('valorDiaria')}" aria-hidden="true"></span>
+      <span id="valorDiaria-error" class="help-block" data-th-if="${#fields.hasErrors('valorDiaria')}" data-th-errors="*{valorDiaria}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="a6d183b7" id="contrato-valordescarga-field" data-th-classappend="${#fields.hasErrors('valorDescarga')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="valorDescarga" class="col-md-6 control-label" data-th-text="#{label_contrato_valordescarga}">valorDescarga</label>
+  <div class="col-md-6">
+    <input id="valorDescarga" name="valorDescarga" data-th-value="*{{valorDescarga}}" type="text" class="form-control inputmask" placeholder="valorDescarga" data-th-placeholder="#{label_contrato_valordescarga}" data-toggle="tooltip" aria-describedby="valorDescargaStatus" data-inputmask-alias="numeric" data-inputmask-integerdigits="6" data-inputmask-digits="2" />
+      <span data-th-classappend="${#fields.hasErrors('valorDescarga')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('valorDescarga')}" aria-hidden="true"></span>
+      <span id="valorDescarga-error" class="help-block" data-th-if="${#fields.hasErrors('valorDescarga')}" data-th-errors="*{valorDescarga}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+              <!-- buttons form -->
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="pull-right">
+                    <button type="submit" class="btn btn-primary" data-th-text="#{label_save}">Save</button>
+                  </div>
+                  <div class="pull-left">
+					              <a onclick="history.go(-1)" class="btn btn-default" data-th-title="#{label_goBack}">
+					                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					                 <span data-th-text="#{label_back}">Back</span>
+					              </a>
+							</div>
+					<!--
+                  <div class="pull-left">
+                    <button type="reset" class="btn btn-default"
+                      onclick="location.href='list.html'"
+                      data-th-onclick="'location.href=\'' + @{${collectionLink.to('list')}} + '\''"
+                      data-th-text="#{label_reset}">Cancel</button>
+                  </div>
+                  -->
+                </div>
+              </div>
+
+          </form>
+          <!-- /FORM -->
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+
+    <!-- DateTimePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js" data-th-src="@{/webjars/datetimepicker/build/jquery.datetimepicker.full.min.js}"></script>
+    <script src="../../static/public/js/datetimepicker-defaults.js" data-th-src="@{/public/js/datetimepicker-defaults.js}"></script>
+
+    <!-- jquery.inputmask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.1/jquery.inputmask.bundle.min.js" data-th-src="@{/webjars/jquery.inputmask/min/jquery.inputmask.bundle.min.js}"></script>
+    <script type="text/javascript" data-th-inline="javascript">
+					(function(jQuery) {
+						jQuery(document)
+								.ready(
+										function() {
+											Inputmask
+													.extendAliases({
+														'numeric' : {
+															'groupSeparator' : /*[[#{label_inputmask_groupSeparator}]]*/'.',
+															'radixPoint' : /*[[#{label_inputmask_radixPoint}]]*/','
+														},
+														'currency' : {
+															'prefix' : /*[[#{label_inputmask_prefix}]]*/'',
+															'suffix' : /*[[#{label_inputmask_suffix}]]*/' €'
+														}
+													});
+										});
+					})(jQuery);
+  		</script>
+    <script src="../../static/public/js/inputmask-defaults.js" data-th-src="@{/public/js/inputmask-defaults.js}"></script>
+
+    <!-- JQuery Validation -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js" data-th-src="@{/webjars/jquery-validation/dist/jquery.validate.min.js}">
+		  </script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" data-th-src="@{/webjars/jquery-validation/dist/additional-methods.min.js}">
+			</script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js" data-th-src="@{/webjars/jquery-validation/src/localization/messages_}+${#locale.language}+'.js'" data-th-if="${#locale.language} != 'en'">
+			</script>
+    <script src="../../static/public/js/validation-defaults.js" data-th-src="@{/public/js/validation-defaults.js}">
+			</script>
+
+    <script type="text/javascript" data-th-inline="javascript">
+					(function(jQuery) {
+						jQuery(document)
+								.ready(
+										function() {
+											jQuery
+													.extend(
+															jQuery.validator.messages,
+															{
+																'dateformat' : /*[[#{error_invalid_date}]]*/'Please enter a correct date/time',
+																'inputmask' : /*[[#{error_invalid_maskValue}]]*/'Please enter a valid value',
+															});
+										});
+					})(jQuery);
+		  </script>
+
+    </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: diego
+Build-Jdk: 16.0.2
+Implementation-Title: Logic
+Implementation-Version: 1.0.0.BUILD-SNAPSHOT
+Implementation-Vendor-Id: br.com.projetologic
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://platform.spring.io/platform/projetologic/
+Created-By: Maven Integration for Eclipse
+

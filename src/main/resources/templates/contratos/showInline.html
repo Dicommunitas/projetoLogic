@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_contrato})}|">Show Contrato - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${contrato}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="contrato-contratante-field" data-z="7b8a9b77">
+            	      <strong data-th-text="#{label_contrato_contratante}">contratante</strong>
+                    <span data-th-text="*{{contratante}}">contratanteValue</span>
+         	        </li>
+                  <li id="contrato-vigenciainicio-field" data-z="d0212be7">
+            	      <strong data-th-text="#{label_contrato_vigenciainicio}">vigenciaInicio</strong>
+                    <span data-th-text="*{{vigenciaInicio}}">vigenciaInicioValue</span>
+         	        </li>
+                  <li id="contrato-vigenciafim-field" data-z="436c5bf7">
+            	      <strong data-th-text="#{label_contrato_vigenciafim}">vigenciaFim</strong>
+                    <span data-th-text="*{{vigenciaFim}}">vigenciaFimValue</span>
+         	        </li>
+                  <li id="contrato-valordiaria-field" data-z="f5d49b77">
+            	      <strong data-th-text="#{label_contrato_valordiaria}">valorDiaria</strong>
+                    <span data-th-text="*{{valorDiaria}}">valorDiariaValue</span>
+         	        </li>
+                  <li id="contrato-valordescarga-field" data-z="a6d183b7">
+            	      <strong data-th-text="#{label_contrato_valordescarga}">valorDescarga</strong>
+                    <span data-th-text="*{{valorDescarga}}">valorDescargaValue</span>
+         	        </li>
+                  <li id="contrato-createddate-field" data-z="2bcefaf7">
+            	      <strong data-th-text="#{label_contrato_createddate}">createdDate</strong>
+                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+         	        </li>
+                  <li id="contrato-createdby-field" data-z="1af33fd7">
+            	      <strong data-th-text="#{label_contrato_createdby}">createdBy</strong>
+                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+         	        </li>
+                  <li id="contrato-modifieddate-field" data-z="bc0c8f67">
+            	      <strong data-th-text="#{label_contrato_modifieddate}">modifiedDate</strong>
+                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+         	        </li>
+                  <li id="contrato-modifiedby-field" data-z="696b3047">
+            	      <strong data-th-text="#{label_contrato_modifiedby}">modifiedBy</strong>
+                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

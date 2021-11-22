@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Languages</title>
+  </head>
+  <body id="body">
+    <!--
+    Only the internal content of the following div is included within
+    the template, in session fragment
+    -->
+    <ul data-th-fragment="languages" class="nav navbar-nav navbar-right upper-nav languages">
+      <!-- Language -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+  			    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;
+  			    <span class="hidden-sm" data-th-text="#{language_label}">Language
+  			    </span><span class="caret"></span>
+  			   </a>
+  			   <ul class="dropdown-menu" id="languageFlags">
+	      			<li id="ptFlag">
+	      			 <a href="?lang=pt" data-th-title="#{label_gotoLanguage}+' Brazil'">
+	      			   <img class="flag" data-th-src="@{/public/img/pt.png}" src="/public/img/pt.png" alt="Brazil" />&nbsp;
+	      			   <span data-th-text="#{language_label_pt}">
+	      			   Brazil</span>
+	      			 </a>
+	      			</li>
+    	     </ul>
+        </li>
+    </ul>
+
+  </body>
+</html>

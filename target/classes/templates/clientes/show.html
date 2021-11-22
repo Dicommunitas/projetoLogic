@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+  <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_cliente})}|">Show Cliente - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content" data-th-object="${cliente}">
+        <div class="container-fluid content">
+
+          <!-- CONTENT -->
+          <h1 data-th-text="#{label_show_entity(#{label_cliente})}">Show Cliente</h1>
+
+            <div id="mainEntityFieldSet">
+              <h2 data-th-text="#{label_data_entity(#{label_cliente})}">Cliente data</h2>
+              <ul class="list-unstyled" id="containerFields">
+                <div class="block-item">
+                  <div class="row">
+                   <div class=" col-md-6"><h2> </h2></div>
+                    <div class=" col-md-12">
+       
+	       	    <div class="col-md-6">
+		                  <li id="cliente-cnpj-field" data-z="c439af2f">
+		            	      <strong data-th-text="#{label_cliente_cnpj}">cnpj</strong>
+		                    <span data-th-text="*{{cnpj}}">cnpjValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cliente-nome-field" data-z="d7a710af">
+		            	      <strong data-th-text="#{label_cliente_nome}">nome</strong>
+		                    <span data-th-text="*{{nome}}">nomeValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cliente-rua-field" data-z="e629d32f">
+		            	      <strong data-th-text="#{label_cliente_rua}">rua</strong>
+		                    <span data-th-text="*{{rua}}">ruaValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cliente-numero-field" data-z="d04ae04f">
+		            	      <strong data-th-text="#{label_cliente_numero}">numero</strong>
+		                    <span data-th-text="*{{numero}}">numeroValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cliente-bairro-field" data-z="2c85cb2f">
+		            	      <strong data-th-text="#{label_cliente_bairro}">bairro</strong>
+		                    <span data-th-text="*{{bairro}}">bairroValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cliente-cidade-field" data-z="74591f4f">
+		            	      <strong data-th-text="#{label_cliente_cidade}">cidade</strong>
+		                    <span data-th-text="*{{cidade}}">cidadeValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cliente-createddate-field" data-z="d4b78c4f">
+		            	      <strong data-th-text="#{label_cliente_createddate}">createdDate</strong>
+		                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cliente-createdby-field" data-z="9300472f">
+		            	      <strong data-th-text="#{label_cliente_createdby}">createdBy</strong>
+		                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cliente-modifieddate-field" data-z="3036290f">
+		            	      <strong data-th-text="#{label_cliente_modifieddate}">modifiedDate</strong>
+		                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cliente-modifiedby-field" data-z="f2ff13ef">
+		            	      <strong data-th-text="#{label_cliente_modifiedby}">modifiedBy</strong>
+		                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+		         	        </li>
+	            </div> 	
+                  </div>
+                </div>
+              </div>
+              </ul>
+            </div>
+          <div class="clearfix">
+            <div class="pull-right">
+             <a id="Cliente_edit" href="edit.html" class="btn btn-primary" data-th-title="#{label_goEdit}" data-th-href="${@linkBuilder.of('ClientesItemThymeleafController').to('editForm').with('cliente', cliente.id)}" data-th-text="#{label_edit}">Edit</a>
+            </div>
+                  <div class="pull-left">
+					              <a onclick="history.go(-1)" class="btn btn-default" data-th-title="#{label_goBack}">
+					                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					                 <span data-th-text="#{label_back}">Back</span>
+					              </a>
+							</div>
+					<!--
+            <div class="pull-left">
+              <a id="Cliente_list" href="list.html" class="btn btn-default"
+                 data-th-title="#{label_goBack}"
+  	             data-th-href="${@linkBuilder.of('ClientesCollectionThymeleafController').to('list')}">
+  	             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  	             <span data-th-text="#{label_back}">Back</span>
+  	          </a>
+            </div>
+                  -->
+          </div>
+
+	        </div>
+	        
+	        
+       
+       
+        </section></div>
+
+      
+      <!-- /CONTENT -->
+  
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

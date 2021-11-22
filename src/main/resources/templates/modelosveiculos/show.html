@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+  <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_modeloveiculo})}|">Show ModeloVeiculo - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content" data-th-object="${modeloVeiculo}">
+        <div class="container-fluid content">
+
+          <!-- CONTENT -->
+          <h1 data-th-text="#{label_show_entity(#{label_modeloveiculo})}">Show ModeloVeiculo</h1>
+
+            <div id="mainEntityFieldSet">
+              <h2 data-th-text="#{label_data_entity(#{label_modeloveiculo})}">ModeloVeiculo data</h2>
+              <ul class="list-unstyled" id="containerFields">
+                <div class="block-item">
+                  <div class="row">
+                   <div class=" col-md-6"><h2> </h2></div>
+                    <div class=" col-md-12">
+       
+	       	    <div class="col-md-6">
+		                  <li id="modeloveiculo-descricao-field" data-z="3f09140">
+		            	      <strong data-th-text="#{label_modeloveiculo_descricao}">descricao</strong>
+		                    <span data-th-text="*{{descricao}}">descricaoValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="modeloveiculo-createddate-field" data-z="be0bab80">
+		            	      <strong data-th-text="#{label_modeloveiculo_createddate}">createdDate</strong>
+		                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="modeloveiculo-createdby-field" data-z="cc847ea0">
+		            	      <strong data-th-text="#{label_modeloveiculo_createdby}">createdBy</strong>
+		                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="modeloveiculo-modifieddate-field" data-z="7165effe">
+		            	      <strong data-th-text="#{label_modeloveiculo_modifieddate}">modifiedDate</strong>
+		                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="modeloveiculo-modifiedby-field" data-z="ea01ca9e">
+		            	      <strong data-th-text="#{label_modeloveiculo_modifiedby}">modifiedBy</strong>
+		                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+		         	        </li>
+	            </div> 	
+                  </div>
+                </div>
+              </div>
+              </ul>
+            </div>
+          <div class="clearfix">
+            <div class="pull-right">
+             <a id="ModeloVeiculo_edit" href="edit.html" class="btn btn-primary" data-th-title="#{label_goEdit}" data-th-href="${@linkBuilder.of('ModelosVeiculosItemThymeleafController').to('editForm').with('modeloVeiculo', modeloVeiculo.id)}" data-th-text="#{label_edit}">Edit</a>
+            </div>
+                  <div class="pull-left">
+					              <a onclick="history.go(-1)" class="btn btn-default" data-th-title="#{label_goBack}">
+					                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					                 <span data-th-text="#{label_back}">Back</span>
+					              </a>
+							</div>
+					<!--
+            <div class="pull-left">
+              <a id="ModeloVeiculo_list" href="list.html" class="btn btn-default"
+                 data-th-title="#{label_goBack}"
+  	             data-th-href="${@linkBuilder.of('ModelosVeiculosCollectionThymeleafController').to('list')}">
+  	             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  	             <span data-th-text="#{label_back}">Back</span>
+  	          </a>
+            </div>
+                  -->
+          </div>
+
+	        </div>
+	        
+	        
+       
+       
+        </section></div>
+
+      
+      <!-- /CONTENT -->
+  
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

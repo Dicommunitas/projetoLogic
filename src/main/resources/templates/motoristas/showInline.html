@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_motorista})}|">Show Motorista - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${motorista}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="motorista-nome-field" data-z="57c5bb01">
+            	      <strong data-th-text="#{label_motorista_nome}">nome</strong>
+                    <span data-th-text="*{{nome}}">nomeValue</span>
+         	        </li>
+                  <li id="motorista-cpf-field" data-z="c8671f3d">
+            	      <strong data-th-text="#{label_motorista_cpf}">cpf</strong>
+                    <span data-th-text="*{{cpf}}">cpfValue</span>
+         	        </li>
+                  <li id="motorista-rg-field" data-z="50d0d001">
+            	      <strong data-th-text="#{label_motorista_rg}">rg</strong>
+                    <span data-th-text="*{{rg}}">rgValue</span>
+         	        </li>
+                  <li id="motorista-endereco-field" data-z="5334b401">
+            	      <strong data-th-text="#{label_motorista_endereco}">endereco</strong>
+                    <span data-th-text="*{{endereco}}">enderecoValue</span>
+         	        </li>
+                  <li id="motorista-telefone1-field" data-z="b42cc2fd">
+            	      <strong data-th-text="#{label_motorista_telefone1}">telefone1</strong>
+                    <span data-th-text="*{{telefone1}}">telefone1Value</span>
+         	        </li>
+                  <li id="motorista-telefone2-field" data-z="b42cc6dd">
+            	      <strong data-th-text="#{label_motorista_telefone2}">telefone2</strong>
+                    <span data-th-text="*{{telefone2}}">telefone2Value</span>
+         	        </li>
+                  <li id="motorista-email-field" data-z="b13f635d">
+            	      <strong data-th-text="#{label_motorista_email}">email</strong>
+                    <span data-th-text="*{{email}}">emailValue</span>
+         	        </li>
+                  <li id="motorista-datanascimento-field" data-z="97e69121">
+            	      <strong data-th-text="#{label_motorista_datanascimento}">dataNascimento</strong>
+                    <span data-th-text="*{{dataNascimento}}">dataNascimentoValue</span>
+         	        </li>
+                  <li id="motorista-createddate-field" data-z="64c601bd">
+            	      <strong data-th-text="#{label_motorista_createddate}">createdDate</strong>
+                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+         	        </li>
+                  <li id="motorista-createdby-field" data-z="1969401d">
+            	      <strong data-th-text="#{label_motorista_createdby}">createdBy</strong>
+                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+         	        </li>
+                  <li id="motorista-modifieddate-field" data-z="a1f66161">
+            	      <strong data-th-text="#{label_motorista_modifieddate}">modifiedDate</strong>
+                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+         	        </li>
+                  <li id="motorista-modifiedby-field" data-z="39b538c1">
+            	      <strong data-th-text="#{label_motorista_modifiedby}">modifiedBy</strong>
+                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

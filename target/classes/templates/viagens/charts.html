@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+<head id="head">
+
+<title data-th-text="#{charts_label}">Welcome - SpringRoo
+	Application</title>
+
+    <!-- DateTimePicker -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css" data-th-href="@{/webjars/datetimepicker/build/jquery.datetimepicker.min.css}" />
+
+<script src="../../static/public/js/Chart.min.js"
+	data-th-src="@{/public/js/Chart.min.js}">
+      </script>
+
+</head>
+
+<body  id="body">
+
+	<header role="banner">
+		<!-- Content replaced by layout of the page displayed -->
+	</header>
+
+	<!-- CONTAINER -->
+	<div class="container bg-container">
+		<!-- CONTENT -->
+		<!--
+          Only the inner content of the following tag "section" is included
+          within the template, in the section "content"
+        -->
+      <section data-layout-fragment="content">
+        <div class="container-fluid content" data-th-with="collectionLink=${@linkBuilder.of('ViagensCollectionThymeleafController')}">
+
+				<div class="box-center">
+					<!-- Project info -->
+					<div class="row">
+						<div class="col-sm-12">
+							<p class="lead" data-th-text="#{info_viagens_charts}">Thanks
+								for your interest in Spring Roo!</p>
+
+						</div>
+					</div>
+
+
+					<!-- FORM -->
+					<!--
+					<form class="form-horizontal validate" method="GET"
+						data-th-object="${viagem}"
+						data-th-action="${collectionLink.to('charts')}">
+
+						<fieldset id="containerFields">
+							<div class="panel panel-default">
+
+
+								<div class="row">
+									<div class="col-md-12 col-md-offset-3">
+										<p data-th-text="#{info_viagens_charts_inicioReal}">info_viagens_charts_inicioReal</p>
+									</div>
+									<div class=" col-md-12">
+
+										<div class="col-md-6">
+											<div class="form-group has-error has-feedback"
+												id="viagem-inicioreal-field" data-z="88de08c"
+												data-th-classappend="${#fields.hasErrors('inicioReal')}? 'has-error has-feedback'"
+												data-th-class="form-group">
+												<label for="inicioReal" class="col-md-6 control-label"
+													data-th-text="#{label_viagem_inicioreal}">inicioReal</label>
+												<div class="col-md-6">
+													<input id="inicioReal" name="inicioReal"
+														data-th-value="*{{inicioReal}}" type="text"
+														class="form-control datetimepicker"
+														placeholder="inicioReal"
+														data-th-placeholder="#{label_viagem_inicioreal}"
+														data-th-attr="data-dateformat=${inicioReal_date_format}"
+														data-toggle="tooltip" /> <span
+														data-th-classappend="${#fields.hasErrors('inicioReal')}? 'glyphicon glyphicon-remove form-control-feedback'"
+														data-th-if="${#fields.hasErrors('inicioReal')}"
+														aria-hidden="true"></span> <span id="inicioReal-error"
+														class="help-block"
+														data-th-if="${#fields.hasErrors('inicioReal')}"
+														data-th-errors="*{inicioReal}">Error message.</span>
+												</div>
+											</div>
+											<script type="text/javascript">
+												if (typeof window.orientation !== 'undefined') {
+													document
+															.getElementById("inicioReal").classList
+															.remove('datetimepicker');
+													document
+															.getElementById("inicioReal").classList
+															.add("datetime-local");
+												}
+											</script>
+										</div>
+										<div class="col-md-6">
+											<div class="pull-right">
+												<button type="submit" class="btn btn-primary"
+													data-th-text="#{label_pesquisar}">Pesquisar</button>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</fieldset>
+
+					</form>
+					<!-- /FORM -->
+
+
+
+
+
+					<!-- charts -->
+					<div class="row">
+						<div class="box-center col-sm-12">
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart0"></canvas>
+								<p data-th-text="#{info_homepage_myChart0}">myChart0!</p>
+
+							</div>
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart1"></canvas>
+								<p data-th-text="#{info_homepage_myChart1}">myChart1!</p>
+
+							</div>
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart2"></canvas>
+								<p data-th-text="#{info_homepage_myChart2}">myChart2!</p>
+							</div>
+							<!--
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart3"></canvas>
+								<p data-th-text="#{info_homepage_myChart3}">myChart3!</p>
+
+							</div>
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart4"></canvas>
+								<p data-th-text="#{info_homepage_myChart4}">myChart4!</p>
+							</div>
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart5"></canvas>
+								<p data-th-text="#{info_homepage_myChart5}">myChart5!</p>
+							</div>
+							-->
+						</div>
+					</div>
+				</div>
+				<!-- box-center -->
+
+				<!-- Chart:  http://www.chartjs.org/ -->
+				<script>
+				var ctx = document.getElementById("myChart0");
+				var myChart = new Chart(ctx, {
+				    type: 'bar',
+				    data: {
+				        labels: [
+				        	"[[#{label_pararamEmPostoFiscal}]]", 
+				        	"[[#{label_naoPararamEmPostoFiscal}]]"
+				        	],
+			        	datasets: [{
+				            data: [
+				            		[[${pararamEmPostoFiscal}]], 
+								   	[[${naoPararamEmPostoFiscal}]]
+								   ],
+				            
+				            backgroundColor: [
+				                'rgba(255, 99, 132, 0.2)',
+				                'rgba(54, 162, 235, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(255,99,132,1)',
+				                'rgba(54, 162, 235, 1)'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				    	legend: { display: false },
+				        title: {
+				          display: true,
+				          text: "[[#{label_PostoFiscal}]]"
+				        },
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                    stepSize: 1,
+				                    beginAtZero:true
+				                }
+				            }]
+				        }
+				    }
+				});
+			</script>
+
+			<script>
+				var ctx = document.getElementById("myChart1");
+				var myChart = new Chart(ctx, {
+				    type: 'horizontalBar',
+				    data: {
+				        labels: [
+				        	"[[#{label_pendente}]]", 
+				        	"[[#{label_prevista}]]", 
+				        	"[[#{label_emTransito}]]", 
+				        	"[[#{label_atrasada}]]", 
+				        	"[[#{label_paradasEmPostoFiscal}]]",
+				        	"[[#{label_noCliente}]]"
+				        	],
+			        	datasets: [{
+				            data: [
+				            		[[${pendente}]], 
+								   	[[${prevista}]],
+								   	[[${emTransito}]],
+								   	[[${atrasada}]],
+								   	[[${paradasEmPostoFiscal}]],
+								   	[[${noCliente}]]
+								   ],
+				            
+				            backgroundColor: [
+				                'rgba(255, 99, 132, 0.2)',
+				                'rgba(54, 12, 235, 0.2)',
+				                'rgba(54, 162, 235, 0.2)',
+				                'rgba(255, 206, 86, 0.2)',
+				                'rgba(100, 206, 86, 0.2)',
+				                'rgba(155, 206, 86, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(255,99,132,1)',
+				                'rgba(54, 12, 235, 1)',
+				                'rgba(54, 162, 235, 1)',
+				                'rgba(255, 206, 86, 1)',
+				                'rgba(100, 206, 86, 1)',
+				                'rgba(155, 206, 86, 1)'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				    	legend: { display: false },
+				        title: {
+				          display: true,
+				          text: "[[#{label_viagem_statusviagem}]]"
+				        },
+				        scales: {
+				            xAxes: [{
+				                ticks: {
+				                    stepSize: 1,
+				                    beginAtZero:true
+				                }
+				            }]
+				        }
+				    }
+				});
+			</script>
+
+
+				<script>
+				var ctx = document.getElementById("myChart2");
+				var myChart = new Chart(ctx, {
+				    type: 'pie',
+				    data: {
+				        labels: [
+					        	"[[#{label_agendaPerdeu}]]", 
+					        	"[[#{label_agendaNaoPerdeu}]]", 
+					        	"[[#{label_agendaNaoSabe}]]"
+					        	],
+				        datasets: [{
+				            label:  "[[#{label_agenda}]]",
+				            data: [
+				            		[[${agendaPerdeu}]], 
+								   	[[${agendaNaoPerdeu}]],
+								   	[[${agendaNaoSabe}]]
+								   ],
+				            
+				            backgroundColor: [
+				                'rgba(255, 99, 132, 0.2)',
+				                'rgba(54, 162, 235, 0.2)',
+				                'rgba(255, 206, 86, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(255,99,132,1)',
+				                'rgba(54, 162, 235, 1)',
+				                'rgba(255, 206, 86, 1)'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				       }
+				});
+			</script>
+
+
+			<script>
+				var ctx = document.getElementById("myChart3");
+				var myChart = new Chart(ctx, {
+				    type: 'doughnut',
+				    data: {
+				        labels: [
+					        	"[[#{label_prevista}]]", 
+					        	"[[#{label_emTransito}]]", 
+					        	"[[#{label_atrasada}]]"
+					        	],
+				        datasets: [{
+				            label: 'Situação das viagens',
+				            data: [
+				            		[[${prevista}]], 
+								   	[[${emTransito}]],
+								   	[[${atrasada}]]
+								   ],
+				            
+				            backgroundColor: [
+				                'rgba(255, 99, 132, 0.2)',
+				                'rgba(54, 162, 235, 0.2)',
+				                'rgba(255, 206, 86, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(255,99,132,1)',
+				                'rgba(54, 162, 235, 1)',
+				                'rgba(255, 206, 86, 1)'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				    }
+				});
+			</script>
+
+
+			<script>
+				var ctx = document.getElementById("myChart4");
+				var myChart = new Chart(ctx, {
+				    type: 'line',
+				    data: {
+				        labels: [
+					        	"[[#{label_prevista}]]", 
+					        	"[[#{label_emTransito}]]", 
+					        	"[[#{label_atrasada}]]"
+					        	],
+				        datasets: [{
+				            label: 'Situação das viagens',
+				            data: [
+				            		[[${prevista}]], 
+								   	[[${emTransito}]],
+								   	[[${atrasada}]]
+								   ],
+				            
+				            backgroundColor: [
+				                'rgba(255, 99, 132, 0.2)',
+				                'rgba(54, 162, 235, 0.2)',
+				                'rgba(255, 206, 86, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(255,99,132,1)',
+				                'rgba(54, 162, 235, 1)',
+				                'rgba(255, 206, 86, 1)'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                    beginAtZero:true
+				                }
+				            }]
+				        }
+				    }
+				});
+			</script>
+
+			<script>
+			var ctx = document.getElementById("myChart5");
+			var myChart = new Chart(ctx, {
+			    type: 'doughnut',
+			    data: {
+			        labels: [
+			        	"[[#{label_myChart5_feito}]] [[${prevista}]]%",
+			        	"[[#{label_myChart5_resta}]] [[${100-prevista}]]%"
+				        	],
+			        datasets: [{
+			            label: 'Situação das viagens',
+			            data: [
+			            		[[${prevista}]], 
+							   	[[${100-prevista}]]
+							   ],
+			            
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(22, 22, 22, 0.2)'
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(22, 22, 22, 0.2)'
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			    }
+			});
+		</script>
+
+
+
+
+
+				</div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+
+    <!-- DateTimePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js" data-th-src="@{/webjars/datetimepicker/build/jquery.datetimepicker.full.min.js}"></script>
+    <script src="../../static/public/js/datetimepicker-defaults.js" data-th-src="@{/public/js/datetimepicker-defaults.js}"></script>
+
+    <!-- jquery.inputmask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.1/jquery.inputmask.bundle.min.js" data-th-src="@{/webjars/jquery.inputmask/min/jquery.inputmask.bundle.min.js}"></script>
+    <script type="text/javascript" data-th-inline="javascript">
+					(function(jQuery) {
+						jQuery(document)
+								.ready(
+										function() {
+											Inputmask
+													.extendAliases({
+														'numeric' : {
+															'groupSeparator' : /*[[#{label_inputmask_groupSeparator}]]*/'.',
+															'radixPoint' : /*[[#{label_inputmask_radixPoint}]]*/','
+														},
+														'currency' : {
+															'prefix' : /*[[#{label_inputmask_prefix}]]*/'',
+															'suffix' : /*[[#{label_inputmask_suffix}]]*/' €'
+														}
+													});
+										});
+					})(jQuery);
+  		</script>
+    <script src="../../static/public/js/inputmask-defaults.js" data-th-src="@{/public/js/inputmask-defaults.js}"></script>
+
+    <!-- JQuery Validation -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js" data-th-src="@{/webjars/jquery-validation/dist/jquery.validate.min.js}">
+		  </script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" data-th-src="@{/webjars/jquery-validation/dist/additional-methods.min.js}">
+			</script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js" data-th-src="@{/webjars/jquery-validation/src/localization/messages_}+${#locale.language}+'.js'" data-th-if="${#locale.language} != 'en'">
+			</script>
+    <script src="../../static/public/js/validation-defaults.js" data-th-src="@{/public/js/validation-defaults.js}">
+			</script>
+
+    <script type="text/javascript" data-th-inline="javascript">
+					(function(jQuery) {
+						jQuery(document)
+								.ready(
+										function() {
+											jQuery
+													.extend(
+															jQuery.validator.messages,
+															{
+																'dateformat' : /*[[#{error_invalid_date}]]*/'Please enter a correct date/time',
+																'inputmask' : /*[[#{error_invalid_maskValue}]]*/'Please enter a valid value',
+															});
+										});
+					})(jQuery);
+		  </script>
+
+    </div>
+
+  </body>
+
+</html>

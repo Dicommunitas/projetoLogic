@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_embarcador})}|">Show Embarcador - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${embarcador}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="embarcador-cnpj-field" data-z="b6e162c9">
+            	      <strong data-th-text="#{label_embarcador_cnpj}">cnpj</strong>
+                    <span data-th-text="*{{cnpj}}">cnpjValue</span>
+         	        </li>
+                  <li id="embarcador-razaosocial-field" data-z="57dc3975">
+            	      <strong data-th-text="#{label_embarcador_razaosocial}">razaoSocial</strong>
+                    <span data-th-text="*{{razaoSocial}}">razaoSocialValue</span>
+         	        </li>
+                  <li id="embarcador-endereco-field" data-z="dc07d949">
+            	      <strong data-th-text="#{label_embarcador_endereco}">endereco</strong>
+                    <span data-th-text="*{{endereco}}">enderecoValue</span>
+         	        </li>
+                  <li id="embarcador-telefone-field" data-z="d0b3f929">
+            	      <strong data-th-text="#{label_embarcador_telefone}">telefone</strong>
+                    <span data-th-text="*{{telefone}}">telefoneValue</span>
+         	        </li>
+                  <li id="embarcador-createddate-field" data-z="d8057775">
+            	      <strong data-th-text="#{label_embarcador_createddate}">createdDate</strong>
+                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+         	        </li>
+                  <li id="embarcador-createdby-field" data-z="aafac3d5">
+            	      <strong data-th-text="#{label_embarcador_createdby}">createdBy</strong>
+                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+         	        </li>
+                  <li id="embarcador-modifieddate-field" data-z="96a5a2a9">
+            	      <strong data-th-text="#{label_embarcador_modifieddate}">modifiedDate</strong>
+                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+         	        </li>
+                  <li id="embarcador-modifiedby-field" data-z="da542c09">
+            	      <strong data-th-text="#{label_embarcador_modifiedby}">modifiedBy</strong>
+                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

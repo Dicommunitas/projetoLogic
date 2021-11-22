@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-layout}">
+  <head id="head">
+
+    <title data-th-text="#{label_create_entity(#{label_veiculo})}">
+      Create Veiculo - Logic - SpringRoo Application</title>
+
+    <!-- DateTimePicker -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css" data-th-href="@{/webjars/datetimepicker/build/jquery.datetimepicker.min.css}" />
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!-- CONTAINER -->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content">
+        <div class="container-fluid content" data-th-with="collectionLink=${@linkBuilder.of('VeiculosCollectionThymeleafController')}">
+
+          <h1 data-th-text="#{label_create_entity(#{label_veiculo})}">Create Veiculo</h1>
+
+          <!-- FORM -->
+          <form class="form-horizontal validate" method="POST" data-th-object="${veiculo}" data-th-action="${collectionLink.to('create').with('veiculo', veiculo.id)}">
+
+            <fieldset id="containerFields">
+              <legend class="sr-only" data-th-text="#{label_data_entity(#{label_veiculo})}">Veiculo data </legend>
+                <div class="panel panel-default">
+                  <div class="row">
+                   <div class=" col-md-6"><h2> </h2></div>
+                    <div class=" col-md-12">
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="5701ffa4" id="veiculo-tipo-field" data-th-classappend="${#fields.hasErrors('tipo')}? 'has-error has-feedback'" data-th-class="form-group">
+    <label for="tipo" class="col-md-6 control-label" data-th-text="#{label_veiculo_tipo}">tipo</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{tipo}" class="form-control dropdown-select-simple" data-allow-clear="false" data-th-attr="data-placeholder=#{info_select_an_option}">
+         <option data-th-each="item : ${tipo}" data-th-value="${item}" data-th-text="${{item}}">Value</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('tipo')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('tipo')}" aria-hidden="true"></span>
+      <span id="tipo-error" class="help-block" data-th-if="${#fields.hasErrors('tipo')}" data-th-errors="*{tipo}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="b32e76da" id="veiculo-placa-field" data-th-classappend="${#fields.hasErrors('placa')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="placa" class="col-md-6 control-label" data-th-text="#{label_veiculo_placa}">placa</label>
+  <div class="col-md-6">
+    <input id="placa" name="placa" data-th-value="*{{placa}}" type="text" class="form-control" placeholder="placa" data-th-placeholder="#{label_veiculo_placa}" data-toggle="tooltip" aria-describedby="placaStatus" />
+  <span data-th-classappend="${#fields.hasErrors('placa')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('placa')}" aria-hidden="true"></span>
+      <span id="placa-error" class="help-block" data-th-if="${#fields.hasErrors('placa')}" data-th-errors="*{placa}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<script type="text/javascript">
+    	function reset_sect_modeloVeiculo(){
+      
+      var data = {
+         id: '',
+         text: ''
+     };
+      
+     // Set the value, creating a new option if necessary
+     if ($('#modeloVeiculo').find("option[value='" + data.id + "']").length) {
+         $('#modeloVeiculo').val(data.id).trigger('change');
+     } else { 
+         // Create a DOM Option and pre-select by default
+         var newOption = new Option(data.text, data.id, true, true);
+         // Append it to the select
+         $('#modeloVeiculo').append(newOption).trigger('change');
+     } 
+    	}
+</script>
+<div class="form-group has-error has-feedback" data-z="57b66fa" id="veiculo-modeloveiculo-field" data-th-classappend="${#fields.hasErrors('modeloVeiculo')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('ModelosVeiculosCollectionThymeleafController')}">
+    <label for="modeloVeiculo" class="col-md-6 control-label modeloVeiculo" data-th-text="#{label_veiculo_modeloveiculo}">ModeloVeiculo</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{modeloVeiculo}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_modeloVeiculo()">
+          <option data-th-unless="*{modeloVeiculo} == null" data-th-value="*{modeloVeiculo.id}" data-th-text="*{{modeloVeiculo}}" selected="selected">ModeloVeiculo</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('modeloVeiculo')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('modeloVeiculo')}" aria-hidden="true"></span>
+      <span id="modeloVeiculo-error" class="help-block" data-th-if="${#fields.hasErrors('modeloVeiculo')}" data-th-errors="*{modeloVeiculo}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="bcbd8d24" id="veiculo-proprietario-field" data-th-classappend="${#fields.hasErrors('proprietario')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="proprietario" class="col-md-6 control-label" data-th-text="#{label_veiculo_proprietario}">proprietario</label>
+  <div class="col-md-6">
+    <input id="proprietario" name="proprietario" data-th-value="*{{proprietario}}" type="text" class="form-control" placeholder="proprietario" data-th-placeholder="#{label_veiculo_proprietario}" data-toggle="tooltip" aria-describedby="proprietarioStatus" />
+  <span data-th-classappend="${#fields.hasErrors('proprietario')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('proprietario')}" aria-hidden="true"></span>
+      <span id="proprietario-error" class="help-block" data-th-if="${#fields.hasErrors('proprietario')}" data-th-errors="*{proprietario}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="8ead4d5a" id="veiculo-ativo-field" data-th-classappend="${#fields.hasErrors('ativo')}? 'has-error has-feedback'" data-th-class="form-group">
+    <label for="ativo" class="col-md-6 control-label" data-th-text="#{label_veiculo_ativo}">ativo</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{ativo}" class="form-control dropdown-select-simple" data-allow-clear="false" data-th-attr="data-placeholder=#{info_select_an_option}">
+         <option data-th-each="item : ${ativo}" data-th-value="${item}" data-th-text="${{item}}">Value</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('ativo')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('ativo')}" aria-hidden="true"></span>
+      <span id="ativo-error" class="help-block" data-th-if="${#fields.hasErrors('ativo')}" data-th-errors="*{ativo}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<script type="text/javascript">
+    	function reset_sect_modeloConjunto(){
+      
+      var data = {
+         id: '',
+         text: ''
+     };
+      
+     // Set the value, creating a new option if necessary
+     if ($('#modeloConjunto').find("option[value='" + data.id + "']").length) {
+         $('#modeloConjunto').val(data.id).trigger('change');
+     } else { 
+         // Create a DOM Option and pre-select by default
+         var newOption = new Option(data.text, data.id, true, true);
+         // Append it to the select
+         $('#modeloConjunto').append(newOption).trigger('change');
+     } 
+    	}
+</script>
+<div class="form-group has-error has-feedback" data-z="ef17fbc4" id="veiculo-modeloconjunto-field" data-th-classappend="${#fields.hasErrors('modeloConjunto')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('ModelosConjuntosCollectionThymeleafController')}">
+    <label for="modeloConjunto" class="col-md-6 control-label modeloConjunto" data-th-text="#{label_veiculo_modeloconjunto}">ModeloConjunto</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{modeloConjunto}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_modeloConjunto()">
+          <option data-th-unless="*{modeloConjunto} == null" data-th-value="*{modeloConjunto.id}" data-th-text="*{{modeloConjunto}}" selected="selected">ModeloConjunto</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('modeloConjunto')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('modeloConjunto')}" aria-hidden="true"></span>
+      <span id="modeloConjunto-error" class="help-block" data-th-if="${#fields.hasErrors('modeloConjunto')}" data-th-errors="*{modeloConjunto}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+              <!-- buttons form -->
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="pull-right">
+                    <button type="submit" class="btn btn-primary" data-th-text="#{label_save}">Save</button>
+                  </div>
+                  <div class="pull-left">
+					              <a onclick="history.go(-1)" class="btn btn-default" data-th-title="#{label_goBack}">
+					                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					                 <span data-th-text="#{label_back}">Back</span>
+					              </a>
+							</div>
+					<!--
+                  <div class="pull-left">
+                    <button type="reset" class="btn btn-default"
+                      onclick="location.href='list.html'"
+                      data-th-onclick="'location.href=\'' + @{${collectionLink.to('list')}} + '\''"
+                      data-th-text="#{label_reset}">Cancel</button>
+                  </div>
+                  -->
+                </div>
+              </div>
+
+          </form>
+          <!-- /FORM -->
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+
+    <!-- DateTimePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js" data-th-src="@{/webjars/datetimepicker/build/jquery.datetimepicker.full.min.js}"></script>
+    <script src="../../static/public/js/datetimepicker-defaults.js" data-th-src="@{/public/js/datetimepicker-defaults.js}"></script>
+
+    <!-- jquery.inputmask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.1/jquery.inputmask.bundle.min.js" data-th-src="@{/webjars/jquery.inputmask/min/jquery.inputmask.bundle.min.js}"></script>
+    <script type="text/javascript" data-th-inline="javascript">
+					(function(jQuery) {
+						jQuery(document)
+								.ready(
+										function() {
+											Inputmask
+													.extendAliases({
+														'numeric' : {
+															'groupSeparator' : /*[[#{label_inputmask_groupSeparator}]]*/'.',
+															'radixPoint' : /*[[#{label_inputmask_radixPoint}]]*/','
+														},
+														'currency' : {
+															'prefix' : /*[[#{label_inputmask_prefix}]]*/'',
+															'suffix' : /*[[#{label_inputmask_suffix}]]*/' €'
+														}
+													});
+										});
+					})(jQuery);
+  		</script>
+    <script src="../../static/public/js/inputmask-defaults.js" data-th-src="@{/public/js/inputmask-defaults.js}"></script>
+
+    <!-- JQuery Validation -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js" data-th-src="@{/webjars/jquery-validation/dist/jquery.validate.min.js}">
+		  </script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" data-th-src="@{/webjars/jquery-validation/dist/additional-methods.min.js}">
+			</script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js" data-th-src="@{/webjars/jquery-validation/src/localization/messages_}+${#locale.language}+'.js'" data-th-if="${#locale.language} != 'en'">
+			</script>
+    <script src="../../static/public/js/validation-defaults.js" data-th-src="@{/public/js/validation-defaults.js}">
+			</script>
+
+    <script type="text/javascript" data-th-inline="javascript">
+					(function(jQuery) {
+						jQuery(document)
+								.ready(
+										function() {
+											jQuery
+													.extend(
+															jQuery.validator.messages,
+															{
+																'dateformat' : /*[[#{error_invalid_date}]]*/'Please enter a correct date/time',
+																'inputmask' : /*[[#{error_invalid_maskValue}]]*/'Please enter a valid value',
+															});
+										});
+					})(jQuery);
+		  </script>
+
+    </div>
+
+  </body>
+
+</html>

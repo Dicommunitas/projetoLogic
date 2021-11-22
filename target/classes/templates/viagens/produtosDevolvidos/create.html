@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-layout}">
+    <head id="head">
+    <title data-th-text="#{label_create_entity(#{label_viagem})}">
+    Create Viagem - Logic - SpringRoo Application</title>
+    <!-- DateTimePicker -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css" data-th-href="@{/webjars/datetimepicker/build/jquery.datetimepicker.min.css}" />
+  </head>
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!-- CONTAINER -->
+    <div class="container bg-container">
+
+
+      <!-- CONTENT -->
+      <section data-layout-fragment="content">
+        <div class="container-fluid content" data-th-with="collectionLink=${@linkBuilder.of('ViagensCollectionThymeleafController')},detailCollectionLink=${@linkBuilder.of('ViagensItemProdutosDevolvidosThymeleafController')}">
+  	<!--
+  	  Only the inner content of the following tag "section" is included
+  	  within the template, in the section "content"
+  	-->
+
+          <h1 data-th-text="#{label_edit_entity(#{label_viagem})}">Edit Viagem</h1>
+
+          <!-- FORM -->
+          <form class="form-horizontal validate" method="POST" data-th-object="${viagem}" data-th-action="${detailCollectionLink.to('create').with('viagem', viagem.id)}">
+            <input type="hidden" name="parentVersion" data-th-value="*{version}" />
+            
+            <!-- CONCURRENCY CONTROL -->
+            <div class="alert alert-warning" data-th-if="${concurrency}">
+              <h2 data-th-text="#{label_concurrency_title}">Warning! This record has been updated by an other user.</h2>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="concurrency" value="apply"> <span data-th-text="#{label_concurrency_apply}">Apply my changes anyway</span> <i><span data-th-text="#{label_concurrency_apply_info}">(discard all the changes applied by the other users).</span></i>
+                </input></label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="concurrency" value="discard" checked=""> <span data-th-text="#{label_concurrency_discard}">Discard all my changes and reload this record.</span>
+                </input></label>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary">Accept</button>
+            </br></div>
+            <!-- /CONCURRENCY CONTROL -->
+            
+            <fieldset id="containerFields">
+              <legend data-th-text="#{label_data_entity(#{label_produtodevolvido})}">ProdutoDevolvido data </legend>
+
+                <div class="form-group has-error has-feedback" data-z="4764eea3" id="produtosdevolvidos-detail" data-th-class="form-group" data-th-with="select2ControllerLink=${@linkBuilder.of('ProdutosDevolvidosCollectionThymeleafController')}">
+                    <div class="col-md-6 col-md-offset-3">
+                      <select id="produtosDevolvidos" name="produtosDevolvidosIds" class="form-control dropdown-select-ajax" data-allow-clear="true" data-ajax--cache="true" data-ajax--data-type="json" data-ajax--delay="250" multiple="multiple" data-data-ajax--url="${select2ControllerLink.to('select2')}" data-data-placeholder="#{info_select_produtosDevolvidos}">
+                          <option data-th-each="item: *{produtosDevolvidos}" selected="true" data-th-text="${{item}}" data-th-value="${item.id}">Another product to select</option>
+                      </select>
+                    </div>
+                </div>
+              </fieldset>
+
+          </form>
+          <!-- /FORM -->
+              	<script>
+              	window.onload = function() {
+    				var all = document.getElementsByClassName("select2-selection--multiple");
+					for (var i = 0; i != all.length +1; i++) {
+					  all[i].style.height = '100%';
+					}
+              	};
+				</script>
+        </div>
+
+
+
+        <div class="container-fluid content" data-th-with="collectionLink=${@linkBuilder.of('ProdutosDevolvidosCollectionThymeleafController')}">
+
+          <h1 data-th-text="#{label_create_entity(#{label_produtodevolvido})}">Create ProdutoDevolvido</h1>
+
+          <!-- FORM -->
+          <form class="form-horizontal validate" method="POST" data-th-object="${produtoDevolvido}" data-th-action="${collectionLink.to('create').with('produtoDevolvido', produtoDevolvido.id)}">
+
+            <fieldset id="containerFields">
+              <legend class="sr-only" data-th-text="#{label_data_entity(#{label_produtodevolvido})}">ProdutoDevolvido data </legend>
+                <div class="panel panel-default">
+                  <div class="row">
+                   <div class=" col-md-6"><h2> </h2></div>
+                    <div class=" col-md-12">
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="c57cd042" id="produtodevolvido-notafiscalorigem-field" data-th-classappend="${#fields.hasErrors('notaFiscalOrigem')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="notaFiscalOrigem" class="col-md-6 control-label" data-th-text="#{label_produtodevolvido_notafiscalorigem}">notaFiscalOrigem</label>
+  <div class="col-md-6">
+    <input id="notaFiscalOrigem" name="notaFiscalOrigem" data-th-value="*{{notaFiscalOrigem}}" type="text" class="form-control" placeholder="notaFiscalOrigem" data-th-placeholder="#{label_produtodevolvido_notafiscalorigem}" data-toggle="tooltip" aria-describedby="notaFiscalOrigemStatus" required="required" />
+  <span data-th-classappend="${#fields.hasErrors('notaFiscalOrigem')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('notaFiscalOrigem')}" aria-hidden="true"></span>
+      <span id="notaFiscalOrigem-error" class="help-block" data-th-if="${#fields.hasErrors('notaFiscalOrigem')}" data-th-errors="*{notaFiscalOrigem}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+							<div class="form-group has-error has-feedback" data-z="a7995c62" id="produtodevolvido-quantidade-field" data-th-classappend="${#fields.hasErrors('quantidade')}? 'has-error has-feedback'" data-th-class="form-group">
+								<label for="quantidade" class="col-md-6 control-label" data-th-text="#{label_produtodevolvido_quantidade}">quantidade</label>
+								<div class="col-md-6">
+									<input id="quantidade" name="quantidade" data-th-value="*{{quantidade}}" type="text" class="form-control inputmask" placeholder="quantidade" data-th-placeholder="#{label_produtodevolvido_quantidade}" data-toggle="tooltip" aria-describedby="quantidadeStatus" data-inputmask-alias="numeric" data-inputmask-digits="0" required="required" /> <span data-th-classappend="${#fields.hasErrors('quantidade')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('quantidade')}" aria-hidden="true"></span> <span id="quantidade-error" class="help-block" data-th-if="${#fields.hasErrors('quantidade')}" data-th-errors="*{quantidade}">Error message.</span>
+								</div>
+							</div>
+						</div>
+				       	    <div class="col-md-6">
+							<div class="form-group has-error has-feedback" data-z="5812125c" id="produtodevolvido-descricao-field" data-th-classappend="${#fields.hasErrors('descricao')}? 'has-error has-feedback'" data-th-class="form-group">
+								<label for="descricao" class="col-md-6 control-label" data-th-text="#{label_produtodevolvido_descricao}">descricao</label>
+								<div class="col-md-6">
+									<input id="descricao" name="descricao" data-th-value="*{{descricao}}" type="text" class="form-control" placeholder="descricao" data-th-placeholder="#{label_produtodevolvido_descricao}" data-toggle="tooltip" aria-describedby="descricaoStatus" required="required" /> <span data-th-classappend="${#fields.hasErrors('descricao')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('descricao')}" aria-hidden="true"></span> <span id="descricao-error" class="help-block" data-th-if="${#fields.hasErrors('descricao')}" data-th-errors="*{descricao}">Error message.</span>
+								</div>
+							</div>
+						</div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="7c81fea2" id="produtodevolvido-referencia-field" data-th-classappend="${#fields.hasErrors('referencia')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="referencia" class="col-md-6 control-label" data-th-text="#{label_produtodevolvido_referencia}">referencia</label>
+  <div class="col-md-6">
+    <input id="referencia" name="referencia" data-th-value="*{{referencia}}" type="text" class="form-control" placeholder="referencia" data-th-placeholder="#{label_produtodevolvido_referencia}" data-toggle="tooltip" aria-describedby="referenciaStatus" required="required" />
+  <span data-th-classappend="${#fields.hasErrors('referencia')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('referencia')}" aria-hidden="true"></span>
+      <span id="referencia-error" class="help-block" data-th-if="${#fields.hasErrors('referencia')}" data-th-errors="*{referencia}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="14e1febc" id="produtodevolvido-notafiscaldevolucao-field" data-th-classappend="${#fields.hasErrors('notaFiscalDevolucao')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="notaFiscalDevolucao" class="col-md-6 control-label" data-th-text="#{label_produtodevolvido_notafiscaldevolucao}">notaFiscalDevolucao</label>
+  <div class="col-md-6">
+    <input id="notaFiscalDevolucao" name="notaFiscalDevolucao" data-th-value="*{{notaFiscalDevolucao}}" type="text" class="form-control" placeholder="notaFiscalDevolucao" data-th-placeholder="#{label_produtodevolvido_notafiscaldevolucao}" data-toggle="tooltip" aria-describedby="notaFiscalDevolucaoStatus" required="required" />
+  <span data-th-classappend="${#fields.hasErrors('notaFiscalDevolucao')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('notaFiscalDevolucao')}" aria-hidden="true"></span>
+      <span id="notaFiscalDevolucao-error" class="help-block" data-th-if="${#fields.hasErrors('notaFiscalDevolucao')}" data-th-errors="*{notaFiscalDevolucao}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+
+<input type="hidden" name="viagem" id="viagem" data-th-value="${viagem.id}" />
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+              <!-- buttons form -->
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="pull-right">
+                    <button type="submit" class="btn btn-primary" data-th-text="#{label_save}">Save</button>
+                  </div>
+                  <div class="pull-left">
+					              <a onclick="history.go(-1)" class="btn btn-default" data-th-title="#{label_goBack}">
+					                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					                 <span data-th-text="#{label_back}">Back</span>
+					              </a>
+							</div>
+					<!--
+                  <div class="pull-left">
+                    <button type="reset" class="btn btn-default"
+                      onclick="location.href='list.html'"
+                      data-th-onclick="'location.href=\'' + @{${collectionLink.to('list')}} + '\''"
+                      data-th-text="#{label_reset}">Cancel</button>
+                  </div>
+                  -->
+                </div>
+              </div>
+
+          </form>
+          <!-- /FORM -->
+
+        </div>
+        
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+
+
+    <!-- DateTimePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js" data-th-src="@{/webjars/datetimepicker/build/jquery.datetimepicker.full.min.js}"></script>
+    <script src="../../static/public/js/datetimepicker-defaults.js" data-th-src="@{/public/js/datetimepicker-defaults.js}"></script>
+
+    <!-- jquery.inputmask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.1/jquery.inputmask.bundle.min.js" data-th-src="@{/webjars/jquery.inputmask/min/jquery.inputmask.bundle.min.js}"></script>
+    <script type="text/javascript" data-th-inline="javascript">
+					(function(jQuery) {
+						jQuery(document)
+								.ready(
+										function() {
+											Inputmask
+													.extendAliases({
+														'numeric' : {
+															'groupSeparator' : /*[[#{label_inputmask_groupSeparator}]]*/'.',
+															'radixPoint' : /*[[#{label_inputmask_radixPoint}]]*/','
+														},
+														'currency' : {
+															'prefix' : /*[[#{label_inputmask_prefix}]]*/'',
+															'suffix' : /*[[#{label_inputmask_suffix}]]*/' 竄ｬ'
+														}
+													});
+										});
+					})(jQuery);
+  		</script>
+    <script src="../../static/public/js/inputmask-defaults.js" data-th-src="@{/public/js/inputmask-defaults.js}"></script>
+
+    <!-- JQuery Validation -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js" data-th-src="@{/webjars/jquery-validation/dist/jquery.validate.min.js}">
+		  </script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" data-th-src="@{/webjars/jquery-validation/dist/additional-methods.min.js}">
+			</script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js" data-th-src="@{/webjars/jquery-validation/src/localization/messages_}+${#locale.language}+'.js'" data-th-if="${#locale.language} != 'en'">
+			</script>
+    <script src="../../static/public/js/validation-defaults.js" data-th-src="@{/public/js/validation-defaults.js}">
+			</script>
+
+    <script type="text/javascript" data-th-inline="javascript">
+					(function(jQuery) {
+						jQuery(document)
+								.ready(
+										function() {
+											jQuery
+													.extend(
+															jQuery.validator.messages,
+															{
+																'dateformat' : /*[[#{error_invalid_date}]]*/'Please enter a correct date/time',
+																'inputmask' : /*[[#{error_invalid_maskValue}]]*/'Please enter a valid value',
+															});
+										});
+					})(jQuery);
+		  </script>
+		  
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+    <!-- Application -->
+    <script type="text/javascript" charset="utf8" src="../../static/public/js/main.js"></script>
+
+</body>
+
+
+     
+       
+        
+              
+</html>

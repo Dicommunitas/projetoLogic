@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_cliente})}|">Show Cliente - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${cliente}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="cliente-cnpj-field" data-z="c439af2f">
+            	      <strong data-th-text="#{label_cliente_cnpj}">cnpj</strong>
+                    <span data-th-text="*{{cnpj}}">cnpjValue</span>
+         	        </li>
+                  <li id="cliente-nome-field" data-z="d7a710af">
+            	      <strong data-th-text="#{label_cliente_nome}">nome</strong>
+                    <span data-th-text="*{{nome}}">nomeValue</span>
+         	        </li>
+                  <li id="cliente-rua-field" data-z="e629d32f">
+            	      <strong data-th-text="#{label_cliente_rua}">rua</strong>
+                    <span data-th-text="*{{rua}}">ruaValue</span>
+         	        </li>
+                  <li id="cliente-numero-field" data-z="d04ae04f">
+            	      <strong data-th-text="#{label_cliente_numero}">numero</strong>
+                    <span data-th-text="*{{numero}}">numeroValue</span>
+         	        </li>
+                  <li id="cliente-bairro-field" data-z="2c85cb2f">
+            	      <strong data-th-text="#{label_cliente_bairro}">bairro</strong>
+                    <span data-th-text="*{{bairro}}">bairroValue</span>
+         	        </li>
+                  <li id="cliente-cidade-field" data-z="74591f4f">
+            	      <strong data-th-text="#{label_cliente_cidade}">cidade</strong>
+                    <span data-th-text="*{{cidade}}">cidadeValue</span>
+         	        </li>
+                  <li id="cliente-createddate-field" data-z="d4b78c4f">
+            	      <strong data-th-text="#{label_cliente_createddate}">createdDate</strong>
+                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+         	        </li>
+                  <li id="cliente-createdby-field" data-z="9300472f">
+            	      <strong data-th-text="#{label_cliente_createdby}">createdBy</strong>
+                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+         	        </li>
+                  <li id="cliente-modifieddate-field" data-z="3036290f">
+            	      <strong data-th-text="#{label_cliente_modifieddate}">modifiedDate</strong>
+                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+         	        </li>
+                  <li id="cliente-modifiedby-field" data-z="f2ff13ef">
+            	      <strong data-th-text="#{label_cliente_modifiedby}">modifiedBy</strong>
+                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

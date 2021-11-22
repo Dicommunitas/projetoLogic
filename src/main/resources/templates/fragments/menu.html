@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page menu</title>
+  </head>
+  <body id="body">
+    <!--
+    Only the internal content of the following div is included within
+    the template, in menu fragment    
+    -->
+    <nav class="navbar navbar-default navbar-static-top" data-th-fragment="menu">
+
+         <div class="container">
+
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainnav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <!-- Brand logo -->
+              <div class="organization-logo navbar-brand">
+                <a title="Logic" href="/" data-th-href="@{/}">
+                  <img alt="Logic" data-th-src="@{/public/img/logo.png}" src="../../static/public/img/logo.png" />
+                </a>
+              </div>
+              <!-- Name application -->
+              <div class="application-name navbar-brand hidden-xs">
+                <a data-th-title="#{label_goHome}" href="/" data-th-href="@{/}">Logic</a>
+              </div>
+
+            </div><!-- /navbar-header -->
+
+            <div id="mainnav" class="navbar-collapse collapse">
+
+              <ul class="nav navbar-nav" id="entitiesMenuEntries">
+                               
+                               
+                
+                <li class="dropdown" id="viagens-entry">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_Atividades})}"> Atividades <span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+			                <li class="dropdown" id="contrato-entry" data-z="dd060ee8" sec:authorize="hasRole('/contratos/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_contrato})}">Contrato<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/contratos/**') or hasRole('ADMIN')"><a href="/contratos/create-form" data-th-href="@{/contratos/create-form}" data-th-utext="#{label_create_entity(#{label_contrato})}">Create Contrato</a></li>
+				                  <li sec:authorize="hasRole('/contratos/**') or hasRole('ADMIN')"><a href="/contratos" data-th-href="@{/contratos}" data-th-utext="#{label_list_entity(#{label_contrato_plural})}">List Contrato</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="embarcador-entry" data-z="d5683d13" sec:authorize="hasRole('/embarcadores/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_embarcador})}">Embarcador<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/embarcadores/**') or hasRole('ADMIN')"><a href="/embarcadores/create-form" data-th-href="@{/embarcadores/create-form}" data-th-utext="#{label_create_entity(#{label_embarcador})}">Create Embarcador</a></li>
+				                  <li sec:authorize="hasRole('/embarcadores/**') or hasRole('ADMIN')"><a href="/embarcadores" data-th-href="@{/embarcadores}" data-th-utext="#{label_list_entity(#{label_embarcador_plural})}">List Embarcador</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="viagem-entry" data-z="353ddca9" sec:authorize="hasRole('/viagens/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_viagem})}">Viagem<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/viagens/**') or hasRole('ADMIN')"><a href="/viagens/create-form" data-th-href="@{/viagens/create-form}" data-th-utext="#{label_create_entity(#{label_viagem})}">Create Viagem</a></li>
+				                  <li sec:authorize="hasRole('/viagens/**') or hasRole('ADMIN')"><a href="/viagens" data-th-href="@{/viagens}" data-th-utext="#{label_list_entity(#{label_viagem_plural})}">List Viagem</a></li>
+				                   <li sec:authorize="hasRole('/viagens/**') or hasRole('ADMIN')"><a href="/viagens/charts" data-th-href="@{/viagens/charts}" data-th-utext="#{charts_label(#{label_viagem})}">charts Viagem</a></li>
+				                   <li sec:authorize="hasRole('/viagens/**') or hasRole('ADMIN')"><a href="/viagens/list_reversa" data-th-href="@{/viagens/list_reversa}" data-th-utext="#{list_reversa_label(#{label_viagem})}">list_reversa Viagem</a></li>
+	                 </ul>
+	                </li>
+                 </ul>
+                </li>
+                
+                        
+                
+                <li class="dropdown" id="viagens-entry">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_Cadastros})}"> Cadastros <span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+			                <li class="dropdown" id="cliente-entry" data-z="5b7dd6" sec:authorize="hasRole('/clientes/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_cliente})}">Cliente<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/clientes/**') or hasRole('ADMIN')"><a href="/clientes/create-form" data-th-href="@{/clientes/create-form}" data-th-utext="#{label_create_entity(#{label_cliente})}">Create Cliente</a></li>
+				                  <li sec:authorize="hasRole('/clientes/**') or hasRole('ADMIN')"><a href="/clientes" data-th-href="@{/clientes}" data-th-utext="#{label_list_entity(#{label_cliente_plural})}">List Cliente</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="modeloconjunto-entry" data-z="c1752b31" sec:authorize="hasRole('/modelosconjuntos/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_modeloconjunto})}">ModeloConjunto<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/modelosconjuntos/**') or hasRole('ADMIN')"><a href="/modelosconjuntos/create-form" data-th-href="@{/modelosconjuntos/create-form}" data-th-utext="#{label_create_entity(#{label_modeloconjunto})}">Create ModeloConjunto</a></li>
+				                  <li sec:authorize="hasRole('/modelosconjuntos/**') or hasRole('ADMIN')"><a href="/modelosconjuntos" data-th-href="@{/modelosconjuntos}" data-th-utext="#{label_list_entity(#{label_modeloconjunto_plural})}">List ModeloConjunto</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="modeloveiculo-entry" data-z="28bc406d" sec:authorize="hasRole('/modelosveiculos/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_modeloveiculo})}">ModeloVeiculo<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/modelosveiculos/**') or hasRole('ADMIN')"><a href="/modelosveiculos/create-form" data-th-href="@{/modelosveiculos/create-form}" data-th-utext="#{label_create_entity(#{label_modeloveiculo})}">Create ModeloVeiculo</a></li>
+				                  <li sec:authorize="hasRole('/modelosveiculos/**') or hasRole('ADMIN')"><a href="/modelosveiculos" data-th-href="@{/modelosveiculos}" data-th-utext="#{label_list_entity(#{label_modeloveiculo_plural})}">List ModeloVeiculo</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="motivonegativadescarga-entry" data-z="f96149c6" sec:authorize="hasRole('/motivosnegativasdescargas/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_motivonegativadescarga})}">MotivoNegativaDescarga<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/motivosnegativasdescargas/**') or hasRole('ADMIN')"><a href="/motivosnegativasdescargas/create-form" data-th-href="@{/motivosnegativasdescargas/create-form}" data-th-utext="#{label_create_entity(#{label_motivonegativadescarga})}">Create MotivoNegativaDescarga</a></li>
+				                  <li sec:authorize="hasRole('/motivosnegativasdescargas/**') or hasRole('ADMIN')"><a href="/motivosnegativasdescargas" data-th-href="@{/motivosnegativasdescargas}" data-th-utext="#{label_list_entity(#{label_motivonegativadescarga_plural})}">List MotivoNegativaDescarga</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="motivonegativadiaria-entry" data-z="a912cb86" sec:authorize="hasRole('/motivosnegativasdiarias/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_motivonegativadiaria})}">MotivoNegativaDiaria<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/motivosnegativasdiarias/**') or hasRole('ADMIN')"><a href="/motivosnegativasdiarias/create-form" data-th-href="@{/motivosnegativasdiarias/create-form}" data-th-utext="#{label_create_entity(#{label_motivonegativadiaria})}">Create MotivoNegativaDiaria</a></li>
+				                  <li sec:authorize="hasRole('/motivosnegativasdiarias/**') or hasRole('ADMIN')"><a href="/motivosnegativasdiarias" data-th-href="@{/motivosnegativasdiarias}" data-th-utext="#{label_list_entity(#{label_motivonegativadiaria_plural})}">List MotivoNegativaDiaria</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="motivoperdaagenda-entry" data-z="75824788" sec:authorize="hasRole('/motivosperdasagendas/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_motivoperdaagenda})}">MotivoPerdaAgenda<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/motivosperdasagendas/**') or hasRole('ADMIN')"><a href="/motivosperdasagendas/create-form" data-th-href="@{/motivosperdasagendas/create-form}" data-th-utext="#{label_create_entity(#{label_motivoperdaagenda})}">Create MotivoPerdaAgenda</a></li>
+				                  <li sec:authorize="hasRole('/motivosperdasagendas/**') or hasRole('ADMIN')"><a href="/motivosperdasagendas" data-th-href="@{/motivosperdasagendas}" data-th-utext="#{label_list_entity(#{label_motivoperdaagenda_plural})}">List MotivoPerdaAgenda</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="motorista-entry" data-z="1bf31816" sec:authorize="hasRole('/motoristas/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_motorista})}">Motorista<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/motoristas/**') or hasRole('ADMIN')"><a href="/motoristas/create-form" data-th-href="@{/motoristas/create-form}" data-th-utext="#{label_create_entity(#{label_motorista})}">Create Motorista</a></li>
+				                  <li sec:authorize="hasRole('/motoristas/**') or hasRole('ADMIN')"><a href="/motoristas" data-th-href="@{/motoristas}" data-th-utext="#{label_list_entity(#{label_motorista_plural})}">List Motorista</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="veiculo-entry" data-z="5b3c09d6" sec:authorize="hasRole('/veiculos/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_veiculo})}">Veiculo<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/veiculos/**') or hasRole('ADMIN')"><a href="/veiculos/create-form" data-th-href="@{/veiculos/create-form}" data-th-utext="#{label_create_entity(#{label_veiculo})}">Create Veiculo</a></li>
+				                  <li sec:authorize="hasRole('/veiculos/**') or hasRole('ADMIN')"><a href="/veiculos" data-th-href="@{/veiculos}" data-th-utext="#{label_list_entity(#{label_veiculo_plural})}">List Veiculo</a></li>
+	                 </ul>
+	                </li>
+                 </ul>
+                </li>
+                
+                
+                
+                <li class="dropdown" id="viagens-entry">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_Admin})}"> Admin <span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+			                <li class="dropdown" id="cidade-entry" data-z="73795928" sec:authorize="hasRole('/cidades/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_cidade})}">Cidade<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/cidades/**') or hasRole('ADMIN')"><a href="/cidades/create-form" data-th-href="@{/cidades/create-form}" data-th-utext="#{label_create_entity(#{label_cidade})}">Create Cidade</a></li>
+				                  <li sec:authorize="hasRole('/cidades/**') or hasRole('ADMIN')"><a href="/cidades" data-th-href="@{/cidades}" data-th-utext="#{label_list_entity(#{label_cidade_plural})}">List Cidade</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="regra-entry" data-z="b7ce0796" sec:authorize="hasRole('/regras/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_regra})}">Regra<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/regras/**') or hasRole('ADMIN')"><a href="/regras/create-form" data-th-href="@{/regras/create-form}" data-th-utext="#{label_create_entity(#{label_regra})}">Create Regra</a></li>
+				                  <li sec:authorize="hasRole('/regras/**') or hasRole('ADMIN')"><a href="/regras" data-th-href="@{/regras}" data-th-utext="#{label_list_entity(#{label_regra_plural})}">List Regra</a></li>
+	                 </ul>
+	                </li>
+			                <li class="dropdown" id="usuario-entry" data-z="3bfe2dd6" sec:authorize="hasRole('/usuarios/**') or hasRole('ADMIN')">
+			                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_usuario})}">Usuario<span class="caret"></span></a>
+			                 <ul class="dropdown-menu">
+				                   <li sec:authorize="hasRole('/usuarios/**') or hasRole('ADMIN')"><a href="/usuarios/create-form" data-th-href="@{/usuarios/create-form}" data-th-utext="#{label_create_entity(#{label_usuario})}">Create Usuario</a></li>
+				                  <li sec:authorize="hasRole('/usuarios/**') or hasRole('ADMIN')"><a href="/usuarios" data-th-href="@{/usuarios}" data-th-utext="#{label_list_entity(#{label_usuario_plural})}">List Usuario</a></li>
+	                 </ul>
+	                </li>
+                 </ul>
+                </li>
+                
+                
+                
+              </ul>
+
+              <!-- Language select -->
+              <ul class="nav navbar-nav navbar-right upper-nav languages" data-th-replace="~{fragments/languages :: languages}">
+                <!-- Content replaced by the session template fragment language.html
+                -->
+                <span>Language data</span>
+              </ul>
+
+              <!-- User menu -->
+              <ul class="nav navbar-nav navbar-right upper-nav session" data-th-replace="~{fragments/session-links :: session}">
+                <!-- Content replaced by the session template fragment session-links.html
+                -->
+                <span>User session data</span>
+              </ul>
+
+
+              <!-- User menu links -->
+              <ul class="nav navbar-nav navbar-right upper-nav links" data-th-replace="~{fragments/session-links :: links}">
+                <!-- Content replaced by the links template fragment session-links.html
+                -->
+                <span>User session data</span>
+              </ul>
+           </div>
+
+          </div>
+    </nav>
+
+    <!--
+    Only the internal content of the following div is included within
+    the template, in menu-languages fragment
+    -->
+    <nav class="navbar navbar-default navbar-static-top" data-th-fragment="menu-languages">
+
+         <div class="container">
+
+            <div class="navbar-header">
+
+              <!-- Brand logo -->
+              <div class="organization-logo navbar-brand">
+                <a title="Logic" href="/" data-th-href="@{/}">
+                  <img alt="Logic" data-th-src="@{/public/img/logo.png}" src="../../static/public/img/logo.png" />
+                </a>
+              </div>
+              <!-- Name application -->
+              <div class="application-name navbar-brand hidden-xs">
+                <a data-th-title="#{label_goHome}" href="/" data-th-href="@{/}">Logic</a>
+              </div>
+
+            </div><!-- /navbar-header -->
+
+            <div id="mainnav" class="navbar-collapse collapse">
+
+              <!-- Language select -->
+              <ul class="nav navbar-nav navbar-right upper-nav languages" data-th-replace="~{fragments/languages :: languages}">
+                <!-- Content replaced by the session template fragment language.html
+                -->
+                <span>Language data</span>
+              </ul>
+
+           </div>
+
+          </div>
+    </nav>
+
+  </body>
+</html>

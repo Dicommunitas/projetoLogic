@@ -1,0 +1,24 @@
+<!--TABLE-->
+<div class="table-responsive" id="containerFields" data-th-fragment="modeloveiculo-entityModalConfirmBody" data-th-with="collectionLink=${@linkBuilder.of('ModelosVeiculosCollectionThymeleafController')},itemLink=${@linkBuilder.of('ModelosVeiculosItemThymeleafController')}">
+    <table id="modeloveiculo-entity-table-item-to-remove" data-data-load-url="${collectionLink.to('datatablesByIdsIn')}">
+      <thead>
+        <tr>
+          <th data-data="descricao" data-th-text="#{label_modeloveiculo_descricao}">descricao</th>
+          <th data-data="createdDate" data-th-text="#{label_modeloveiculo_createddate}">createdDate</th>
+          <th data-data="createdBy" data-th-text="#{label_modeloveiculo_createdby}">createdBy</th>
+          <th data-data="modifiedDate" data-th-text="#{label_modeloveiculo_modifieddate}">modifiedDate</th>
+          <th data-data="modifiedBy" data-th-text="#{label_modeloveiculo_modifiedby}">modifiedBy</th>
+        </tr>
+      </thead>
+      <tbody data-th-remove="all">
+        <tr>
+          <td>descricao</td>
+          <td>createdDate</td>
+          <td>createdBy</td>
+          <td>modifiedDate</td>
+          <td>modifiedBy</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<!-- /TABLE -->

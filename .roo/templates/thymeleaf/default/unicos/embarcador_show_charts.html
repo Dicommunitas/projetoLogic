@@ -1,0 +1,270 @@
+
+
+<script src="../../static/public/js/Chart.min.js"
+	data-th-src="@{/public/js/Chart.min.js}">
+      </script>
+
+
+					<!-- charts -->
+					<div class="row">
+						<div class="box-center col-sm-12">
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart0"></canvas>
+								<p data-th-text="#{info_homepage_myChart0_embarcador}">myChart0!</p>
+
+							</div>
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart1"></canvas>
+								<p data-th-text="#{info_homepage_myChart1_embarcador}">myChart1!</p>
+
+							</div>
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart2"></canvas>
+								<p data-th-text="#{info_homepage_myChart2_embarcador}">myChart2!</p>
+							</div>
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart3"></canvas>
+								<p data-th-text="#{info_homepage_myChart3_embarcador}">myChart3!</p>
+
+							</div>
+							<!--
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart4"></canvas>
+								<p data-th-text="#{info_homepage_myChart4_embarcador}">myChart4!</p>
+							</div>
+							<div class="panel panel-default col-sm-6">
+								<canvas id="myChart5"></canvas>
+								<p data-th-text="#{info_homepage_myChart5_embarcador}">myChart4!</p>
+							</div>
+							-->
+						</div>
+					</div>
+				<!-- box-center -->
+
+				<!-- Chart:  http://www.chartjs.org/ -->
+
+			<script>
+				var ctx = document.getElementById("myChart0");
+				var myChart = new Chart(ctx, {
+				    type: 'horizontalBar',
+				    data: {
+				        labels: [
+				        	"[[#{label_embarcador_faturamento_total}]]"
+				        	],
+			        	datasets: [{
+				            data: [
+				            		[[${embarcador.faturamento}]]
+								   ],
+				            
+				            backgroundColor: [
+				                'rgba(0, 0, 255, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(0, 0, 255, 1)'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				    	legend: { display: false },
+				        title: {
+				          display: true,
+				          text: "[[#{label_embarcador_faturamento}]]"
+				        },
+				        scales: {
+				            xAxes: [{
+				                ticks: {
+				                    beginAtZero:true
+				                }
+				            }]
+				        }
+				    }
+				});
+			</script>
+				<script>
+				var ctx = document.getElementById("myChart1");
+				var myChart = new Chart(ctx, {
+				    type: 'horizontalBar',
+				    data: {
+				        labels: [
+				        	"[[#{label_embarcador_faturamentoDiarias}]]", 
+				        	"[[#{label_embarcador_faturamentoDescargas}]]"
+				        	],
+			        	datasets: [{
+				            data: [
+				            		[[${embarcador.faturamentoDiarias}]], 
+								   	[[${embarcador.faturamentoDescargas}]]
+								   ],
+						            
+						            backgroundColor: [
+						                'rgba(10, 100, 210, 0.2)',
+						                'rgba(20, 200, 210, 0.2)'
+						            ],
+						            borderColor: [
+						                'rgba(10, 100, 210, 1)',
+						                'rgba(20, 200, 210, 1)'
+						            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				    	legend: { display: false },
+				        title: {
+				          display: true,
+				          text: "[[#{label_embarcador_faturamentos}]]"
+				        },
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                    beginAtZero:true
+				                }
+				            }]
+				        }
+				    }
+				});
+			</script>
+
+
+				<script>
+				var ctx = document.getElementById("myChart2");
+				var myChart = new Chart(ctx, {
+				    type: 'pie',
+				    data: {
+				        labels: [
+					        	"[[#{label_embarcador_diariasAutorizadas}]]", 
+					        	"[[#{label_embarcador_diariasNegadas}]]"
+					        	],
+				        datasets: [{
+				            label:  "[[#{label_embarcador_}]]",
+				            data: [
+				            		[[${embarcador.diariasAutorizadas}]], 
+								   	[[${embarcador.diariasNegadas}]]
+								   ],
+				            
+				            backgroundColor: [
+				                'rgba(10, 255, 10, 0.2)',
+				                'rgba(255, 10, 10, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(10, 255, 10, 1)',
+				                'rgba(255, 10, 10, 1)'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				       }
+				});
+			</script>
+
+
+			<script>
+				var ctx = document.getElementById("myChart3");
+				var myChart = new Chart(ctx, {
+				    type: 'pie',
+				    data: {
+				        labels: [
+					        	"[[#{label_embarcador_descargasAutorizadas}]]", 
+					        	"[[#{label_embarcador_descargasNegadas}]]"
+					        	],
+				        datasets: [{
+				            label:  "[[#{label_embarcador_}]]",
+				            data: [
+				            		[[${embarcador.descargasAutorizadas}]], 
+								   	[[${embarcador.descargasNegadas}]]
+								   ],
+				            
+				            backgroundColor: [
+				                'rgba(10, 255, 10, 0.2)',
+				                'rgba(255, 10, 10, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(10, 255, 10, 1)',
+				                'rgba(255, 10, 10, 1)'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				    }
+				});
+			</script>
+
+
+			<script>
+				var ctx = document.getElementById("myChart4");
+				var myChart = new Chart(ctx, {
+				    type: 'line',
+				    data: {
+				        labels: [
+					        	"[[#{label_prevista}]]", 
+					        	"[[#{label_emTransito}]]", 
+					        	"[[#{label_atrasada}]]"
+					        	],
+				        datasets: [{
+				            label: 'Situação das viagens',
+				            data: [
+				            		[[${10}]], 
+								   	[[${20}]],
+								   	[[${30}]]
+								   ],
+				            
+				            backgroundColor: [
+				                'rgba(255, 99, 132, 0.2)',
+				                'rgba(54, 162, 235, 0.2)',
+				                'rgba(255, 206, 86, 0.2)'
+				            ],
+				            borderColor: [
+				                'rgba(255,99,132,1)',
+				                'rgba(54, 162, 235, 1)',
+				                'rgba(255, 206, 86, 1)'
+				            ],
+				            borderWidth: 1
+				        }]
+				    },
+				    options: {
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                    beginAtZero:true
+				                }
+				            }]
+				        }
+				    }
+				});
+			</script>
+
+			<script>
+			var ctx = document.getElementById("myChart5");
+			var myChart = new Chart(ctx, {
+			    type: 'doughnut',
+			    data: {
+			        labels: [
+			        	"[[#{label_myChart5_feito}]] [[${20}]]%",
+			        	"[[#{label_myChart5_resta}]] [[${100-20}]]%"
+				        	],
+			        datasets: [{
+			            label: 'Situação das viagens',
+			            data: [
+			            		[[${20}]], 
+							   	[[${100-20}]]
+							   ],
+			            
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(22, 22, 22, 0.2)'
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(22, 22, 22, 0.2)'
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			    }
+			});
+		</script>
+
+
+

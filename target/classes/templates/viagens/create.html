@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-layout}">
+  <head id="head">
+
+    <title data-th-text="#{label_create_entity(#{label_viagem})}">
+      Create Viagem - Logic - SpringRoo Application</title>
+
+    <!-- DateTimePicker -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css" data-th-href="@{/webjars/datetimepicker/build/jquery.datetimepicker.min.css}" />
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!-- CONTAINER -->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content">
+        <div class="container-fluid content" data-th-with="collectionLink=${@linkBuilder.of('ViagensCollectionThymeleafController')}">
+
+          <h1 data-th-text="#{label_create_entity(#{label_viagem})}">Create Viagem</h1>
+
+          <!-- FORM -->
+          <form class="form-horizontal validate" method="POST" data-th-object="${viagem}" data-th-action="${collectionLink.to('create').with('viagem', viagem.id)}">
+
+            <fieldset id="containerFields">
+              <legend class="sr-only" data-th-text="#{label_data_entity(#{label_viagem})}">Viagem data </legend>
+				              <!-- Expedição -->
+				                <div class="panel panel-default" sec:authorize="hasRole('/viagens_expedição')">
+				                  <div class="row">
+				                   <div class=" col-md-6"> <h2 data-th-title="#{label_viagem_expedição}">Expedição</h2> </div>
+				                    <div class=" col-md-12">
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="6538fd0c" id="viagem-embarcador-field" data-th-classappend="${#fields.hasErrors('embarcador')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('EmbarcadoresCollectionThymeleafController')}">
+    <label for="embarcador" class="col-md-6 control-label embarcador" data-th-text="#{label_viagem_embarcador}">Embarcador</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{embarcador}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_embarcador()">
+          <option data-th-unless="*{embarcador} == null" data-th-value="*{embarcador.id}" data-th-text="*{{embarcador}}" selected="selected">Embarcador</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('embarcador')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('embarcador')}" aria-hidden="true"></span>
+      <span id="embarcador-error" class="help-block" data-th-if="${#fields.hasErrors('embarcador')}" data-th-errors="*{embarcador}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="c197700c" id="viagem-cidadeorigem-field" data-th-classappend="${#fields.hasErrors('cidadeOrigem')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('CidadesCollectionThymeleafController')}">
+    <label for="cidadeOrigem" class="col-md-6 control-label cidadeOrigem" data-th-text="#{label_viagem_cidadeorigem}">Cidade</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{cidadeOrigem}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_cidadeOrigem()">
+          <option data-th-unless="*{cidadeOrigem} == null" data-th-value="*{cidadeOrigem.id}" data-th-text="*{{cidadeOrigem}}" selected="selected">Cidade</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('cidadeOrigem')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('cidadeOrigem')}" aria-hidden="true"></span>
+      <span id="cidadeOrigem-error" class="help-block" data-th-if="${#fields.hasErrors('cidadeOrigem')}" data-th-errors="*{cidadeOrigem}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-datalancamento-field" data-z="815769ec" data-th-classappend="${#fields.hasErrors('dataLancamento')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="dataLancamento" class="col-md-6 control-label" data-th-text="#{label_viagem_datalancamento}">dataLancamento</label>
+  <div class="col-md-6">
+    <input id="dataLancamento" name="dataLancamento" data-th-value="*{{dataLancamento}}" type="text" class="form-control datetimepicker" placeholder="dataLancamento" data-th-placeholder="#{label_viagem_datalancamento}" data-th-attr="data-dateformat=${dataLancamento_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('dataLancamento')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('dataLancamento')}" aria-hidden="true"></span>
+     <span id="dataLancamento-error" class="help-block" data-th-if="${#fields.hasErrors('dataLancamento')}" data-th-errors="*{dataLancamento}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("dataLancamento").classList.remove('datetimepicker');
+		 	document.getElementById("dataLancamento").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="f429eed2" id="viagem-identificacaotransporte-field" data-th-classappend="${#fields.hasErrors('identificacaoTransporte')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="identificacaoTransporte" class="col-md-6 control-label" data-th-text="#{label_viagem_identificacaotransporte}">identificacaoTransporte</label>
+  <div class="col-md-6">
+    <input id="identificacaoTransporte" name="identificacaoTransporte" data-th-value="*{{identificacaoTransporte}}" type="text" class="form-control inputmask" placeholder="identificacaoTransporte" data-th-placeholder="#{label_viagem_identificacaotransporte}" data-toggle="tooltip" aria-describedby="identificacaoTransporteStatus" data-inputmask-alias="numeric" data-inputmask-digits="0" />
+      <span data-th-classappend="${#fields.hasErrors('identificacaoTransporte')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('identificacaoTransporte')}" aria-hidden="true"></span>
+      <span id="identificacaoTransporte-error" class="help-block" data-th-if="${#fields.hasErrors('identificacaoTransporte')}" data-th-errors="*{identificacaoTransporte}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="1c13ce12" id="viagem-destino-field" data-th-classappend="${#fields.hasErrors('destino')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('ClientesCollectionThymeleafController')}">
+    <label for="destino" class="col-md-6 control-label destino" data-th-text="#{label_viagem_destino}">Cliente</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{destino}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_destino()">
+          <option data-th-unless="*{destino} == null" data-th-value="*{destino.id}" data-th-text="*{{destino}}" selected="selected">Cliente</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('destino')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('destino')}" aria-hidden="true"></span>
+      <span id="destino-error" class="help-block" data-th-if="${#fields.hasErrors('destino')}" data-th-errors="*{destino}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-agenda-field" data-z="23ee85cc" data-th-classappend="${#fields.hasErrors('agenda')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="agenda" class="col-md-6 control-label" data-th-text="#{label_viagem_agenda}">agenda</label>
+  <div class="col-md-6">
+    <input id="agenda" name="agenda" data-th-value="*{{agenda}}" type="text" class="form-control datetimepicker" placeholder="agenda" data-th-placeholder="#{label_viagem_agenda}" data-th-attr="data-dateformat=${agenda_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('agenda')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('agenda')}" aria-hidden="true"></span>
+     <span id="agenda-error" class="help-block" data-th-if="${#fields.hasErrors('agenda')}" data-th-errors="*{agenda}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("agenda").classList.remove('datetimepicker');
+		 	document.getElementById("agenda").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="5c25dcd2" id="viagem-motorista-field" data-th-classappend="${#fields.hasErrors('motorista')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('MotoristasCollectionThymeleafController')}">
+    <label for="motorista" class="col-md-6 control-label motorista" data-th-text="#{label_viagem_motorista}">Motorista</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{motorista}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_motorista()">
+          <option data-th-unless="*{motorista} == null" data-th-value="*{motorista.id}" data-th-text="*{{motorista}}" selected="selected">Motorista</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('motorista')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('motorista')}" aria-hidden="true"></span>
+      <span id="motorista-error" class="help-block" data-th-if="${#fields.hasErrors('motorista')}" data-th-errors="*{motorista}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="3313adcc" id="viagem-cavalo-field" data-th-classappend="${#fields.hasErrors('cavalo')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('VeiculosCollectionThymeleafController')}">
+    <label for="cavalo" class="col-md-6 control-label cavalo" data-th-text="#{label_viagem_cavalo}">Veiculo</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{cavalo}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_cavalo()">
+          <option data-th-unless="*{cavalo} == null" data-th-value="*{cavalo.id}" data-th-text="*{{cavalo}}" selected="selected">Veiculo</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('cavalo')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('cavalo')}" aria-hidden="true"></span>
+      <span id="cavalo-error" class="help-block" data-th-if="${#fields.hasErrors('cavalo')}" data-th-errors="*{cavalo}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="dc7c246c" id="viagem-carreta1-field" data-th-classappend="${#fields.hasErrors('carreta1')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('VeiculosCollectionThymeleafController')}">
+    <label for="carreta1" class="col-md-6 control-label carreta1" data-th-text="#{label_viagem_carreta1}">Veiculo</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{carreta1}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_carreta1()">
+          <option data-th-unless="*{carreta1} == null" data-th-value="*{carreta1.id}" data-th-text="*{{carreta1}}" selected="selected">Veiculo</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('carreta1')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('carreta1')}" aria-hidden="true"></span>
+      <span id="carreta1-error" class="help-block" data-th-if="${#fields.hasErrors('carreta1')}" data-th-errors="*{carreta1}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<script type="text/javascript">
+    	function reset_sect_carreta2(){
+      
+      var data = {
+         id: '',
+         text: ''
+     };
+      
+     // Set the value, creating a new option if necessary
+     if ($('#carreta2').find("option[value='" + data.id + "']").length) {
+         $('#carreta2').val(data.id).trigger('change');
+     } else { 
+         // Create a DOM Option and pre-select by default
+         var newOption = new Option(data.text, data.id, true, true);
+         // Append it to the select
+         $('#carreta2').append(newOption).trigger('change');
+     } 
+    	}
+</script>
+<div class="form-group has-error has-feedback" data-z="dc7c284c" id="viagem-carreta2-field" data-th-classappend="${#fields.hasErrors('carreta2')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('VeiculosCollectionThymeleafController')}">
+    <label for="carreta2" class="col-md-6 control-label carreta2" data-th-text="#{label_viagem_carreta2}">Veiculo</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{carreta2}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_carreta2()">
+          <option data-th-unless="*{carreta2} == null" data-th-value="*{carreta2.id}" data-th-text="*{{carreta2}}" selected="selected">Veiculo</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('carreta2')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('carreta2')}" aria-hidden="true"></span>
+      <span id="carreta2-error" class="help-block" data-th-if="${#fields.hasErrors('carreta2')}" data-th-errors="*{carreta2}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-inicioestimado-field" data-z="8dfb7d8c" data-th-classappend="${#fields.hasErrors('inicioEstimado')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="inicioEstimado" class="col-md-6 control-label" data-th-text="#{label_viagem_inicioestimado}">inicioEstimado</label>
+  <div class="col-md-6">
+    <input id="inicioEstimado" name="inicioEstimado" data-th-value="*{{inicioEstimado}}" type="text" class="form-control datetimepicker" placeholder="inicioEstimado" data-th-placeholder="#{label_viagem_inicioestimado}" data-th-attr="data-dateformat=${inicioEstimado_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('inicioEstimado')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('inicioEstimado')}" aria-hidden="true"></span>
+     <span id="inicioEstimado-error" class="help-block" data-th-if="${#fields.hasErrors('inicioEstimado')}" data-th-errors="*{inicioEstimado}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("inicioEstimado").classList.remove('datetimepicker');
+		 	document.getElementById("inicioEstimado").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+				       	    	<input type="hidden" name="usuarioExpedicao" id="usuarioExpedicao" data-th-value="${#authentication.getPrincipal().getUserId()}" />
+				       	    </div>
+				                  </div>
+				                </div>
+				              </div>
+				              <!-- Call center -->
+				                <div class="panel panel-default" sec:authorize="hasRole('/viagens_call_center')">
+				                  <div class="row">
+				                   <div class=" col-md-6"> <h2 data-th-title="#{label_viagem_Call_center}">Call center</h2> </div>
+				                    <div class=" col-md-12">
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-inicioreal-field" data-z="88de08c" data-th-classappend="${#fields.hasErrors('inicioReal')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="inicioReal" class="col-md-6 control-label" data-th-text="#{label_viagem_inicioreal}">inicioReal</label>
+  <div class="col-md-6">
+    <input id="inicioReal" name="inicioReal" data-th-value="*{{inicioReal}}" type="text" class="form-control datetimepicker" placeholder="inicioReal" data-th-placeholder="#{label_viagem_inicioreal}" data-th-attr="data-dateformat=${inicioReal_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('inicioReal')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('inicioReal')}" aria-hidden="true"></span>
+     <span id="inicioReal-error" class="help-block" data-th-if="${#fields.hasErrors('inicioReal')}" data-th-errors="*{inicioReal}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("inicioReal").classList.remove('datetimepicker');
+		 	document.getElementById("inicioReal").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-horaparadapostofiscal-field" data-z="a0471a72" data-th-classappend="${#fields.hasErrors('horaParadaPostoFiscal')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="horaParadaPostoFiscal" class="col-md-6 control-label" data-th-text="#{label_viagem_horaparadapostofiscal}">horaParadaPostoFiscal</label>
+  <div class="col-md-6">
+    <input id="horaParadaPostoFiscal" name="horaParadaPostoFiscal" data-th-value="*{{horaParadaPostoFiscal}}" type="text" class="form-control datetimepicker" placeholder="horaParadaPostoFiscal" data-th-placeholder="#{label_viagem_horaparadapostofiscal}" data-th-attr="data-dateformat=${horaParadaPostoFiscal_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('horaParadaPostoFiscal')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('horaParadaPostoFiscal')}" aria-hidden="true"></span>
+     <span id="horaParadaPostoFiscal-error" class="help-block" data-th-if="${#fields.hasErrors('horaParadaPostoFiscal')}" data-th-errors="*{horaParadaPostoFiscal}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("horaParadaPostoFiscal").classList.remove('datetimepicker');
+		 	document.getElementById("horaParadaPostoFiscal").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-horasaidapostofiscal-field" data-z="95fa4b4c" data-th-classappend="${#fields.hasErrors('horaSaidaPostoFiscal')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="horaSaidaPostoFiscal" class="col-md-6 control-label" data-th-text="#{label_viagem_horasaidapostofiscal}">horaSaidaPostoFiscal</label>
+  <div class="col-md-6">
+    <input id="horaSaidaPostoFiscal" name="horaSaidaPostoFiscal" data-th-value="*{{horaSaidaPostoFiscal}}" type="text" class="form-control datetimepicker" placeholder="horaSaidaPostoFiscal" data-th-placeholder="#{label_viagem_horasaidapostofiscal}" data-th-attr="data-dateformat=${horaSaidaPostoFiscal_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('horaSaidaPostoFiscal')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('horaSaidaPostoFiscal')}" aria-hidden="true"></span>
+     <span id="horaSaidaPostoFiscal-error" class="help-block" data-th-if="${#fields.hasErrors('horaSaidaPostoFiscal')}" data-th-errors="*{horaSaidaPostoFiscal}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("horaSaidaPostoFiscal").classList.remove('datetimepicker');
+		 	document.getElementById("horaSaidaPostoFiscal").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-chegadacliente-field" data-z="b93671cc" data-th-classappend="${#fields.hasErrors('chegadaCliente')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="chegadaCliente" class="col-md-6 control-label" data-th-text="#{label_viagem_chegadacliente}">chegadaCliente</label>
+  <div class="col-md-6">
+    <input id="chegadaCliente" name="chegadaCliente" data-th-value="*{{chegadaCliente}}" type="text" class="form-control datetimepicker" placeholder="chegadaCliente" data-th-placeholder="#{label_viagem_chegadacliente}" data-th-attr="data-dateformat=${chegadaCliente_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('chegadaCliente')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('chegadaCliente')}" aria-hidden="true"></span>
+     <span id="chegadaCliente-error" class="help-block" data-th-if="${#fields.hasErrors('chegadaCliente')}" data-th-errors="*{chegadaCliente}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("chegadaCliente").classList.remove('datetimepicker');
+		 	document.getElementById("chegadaCliente").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<script type="text/javascript">
+    	function reset_sect_motivoPerdaAgenda(){
+      
+      var data = {
+         id: '',
+         text: ''
+     };
+      
+     // Set the value, creating a new option if necessary
+     if ($('#motivoPerdaAgenda').find("option[value='" + data.id + "']").length) {
+         $('#motivoPerdaAgenda').val(data.id).trigger('change');
+     } else { 
+         // Create a DOM Option and pre-select by default
+         var newOption = new Option(data.text, data.id, true, true);
+         // Append it to the select
+         $('#motivoPerdaAgenda').append(newOption).trigger('change');
+     } 
+    	}
+</script>
+<div class="form-group has-error has-feedback" data-z="75aacc92" id="viagem-motivoperdaagenda-field" data-th-classappend="${#fields.hasErrors('motivoPerdaAgenda')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('MotivosPerdasAgendasCollectionThymeleafController')}">
+    <label for="motivoPerdaAgenda" class="col-md-6 control-label motivoPerdaAgenda" data-th-text="#{label_viagem_motivoperdaagenda}">MotivoPerdaAgenda</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{motivoPerdaAgenda}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_motivoPerdaAgenda()">
+          <option data-th-unless="*{motivoPerdaAgenda} == null" data-th-value="*{motivoPerdaAgenda.id}" data-th-text="*{{motivoPerdaAgenda}}" selected="selected">MotivoPerdaAgenda</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('motivoPerdaAgenda')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('motivoPerdaAgenda')}" aria-hidden="true"></span>
+      <span id="motivoPerdaAgenda-error" class="help-block" data-th-if="${#fields.hasErrors('motivoPerdaAgenda')}" data-th-errors="*{motivoPerdaAgenda}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-iniciodescarga-field" data-z="42ca724c" data-th-classappend="${#fields.hasErrors('inicioDescarga')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="inicioDescarga" class="col-md-6 control-label" data-th-text="#{label_viagem_iniciodescarga}">inicioDescarga</label>
+  <div class="col-md-6">
+    <input id="inicioDescarga" name="inicioDescarga" data-th-value="*{{inicioDescarga}}" type="text" class="form-control datetimepicker" placeholder="inicioDescarga" data-th-placeholder="#{label_viagem_iniciodescarga}" data-th-attr="data-dateformat=${inicioDescarga_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('inicioDescarga')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('inicioDescarga')}" aria-hidden="true"></span>
+     <span id="inicioDescarga-error" class="help-block" data-th-if="${#fields.hasErrors('inicioDescarga')}" data-th-errors="*{inicioDescarga}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("inicioDescarga").classList.remove('datetimepicker');
+		 	document.getElementById("inicioDescarga").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-fimdescarga-field" data-z="21ce34f2" data-th-classappend="${#fields.hasErrors('fimDescarga')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="fimDescarga" class="col-md-6 control-label" data-th-text="#{label_viagem_fimdescarga}">fimDescarga</label>
+  <div class="col-md-6">
+    <input id="fimDescarga" name="fimDescarga" data-th-value="*{{fimDescarga}}" type="text" class="form-control datetimepicker" placeholder="fimDescarga" data-th-placeholder="#{label_viagem_fimdescarga}" data-th-attr="data-dateformat=${fimDescarga_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('fimDescarga')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('fimDescarga')}" aria-hidden="true"></span>
+     <span id="fimDescarga-error" class="help-block" data-th-if="${#fields.hasErrors('fimDescarga')}" data-th-errors="*{fimDescarga}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("fimDescarga").classList.remove('datetimepicker');
+		 	document.getElementById("fimDescarga").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-fimviagem-field" data-z="d695fd12" data-th-classappend="${#fields.hasErrors('fimViagem')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="fimViagem" class="col-md-6 control-label" data-th-text="#{label_viagem_fimviagem}">fimViagem</label>
+  <div class="col-md-6">
+    <input id="fimViagem" name="fimViagem" data-th-value="*{{fimViagem}}" type="text" class="form-control datetimepicker" placeholder="fimViagem" data-th-placeholder="#{label_viagem_fimviagem}" data-th-attr="data-dateformat=${fimViagem_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('fimViagem')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('fimViagem')}" aria-hidden="true"></span>
+     <span id="fimViagem-error" class="help-block" data-th-if="${#fields.hasErrors('fimViagem')}" data-th-errors="*{fimViagem}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("fimViagem").classList.remove('datetimepicker');
+		 	document.getElementById("fimViagem").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="c9c1ae12" id="viagem-despesadescarga-field" data-th-classappend="${#fields.hasErrors('despesaDescarga')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="despesaDescarga" class="col-md-6 control-label" data-th-text="#{label_viagem_despesadescarga}">despesaDescarga</label>
+  <div class="col-md-6">
+    <input id="despesaDescarga" name="despesaDescarga" data-th-value="*{{despesaDescarga}}" type="text" class="form-control inputmask" placeholder="despesaDescarga" data-th-placeholder="#{label_viagem_despesadescarga}" data-toggle="tooltip" aria-describedby="despesaDescargaStatus" data-inputmask-alias="numeric" data-inputmask-integerdigits="6" data-inputmask-digits="2" />
+      <span data-th-classappend="${#fields.hasErrors('despesaDescarga')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('despesaDescarga')}" aria-hidden="true"></span>
+      <span id="despesaDescarga-error" class="help-block" data-th-if="${#fields.hasErrors('despesaDescarga')}" data-th-errors="*{despesaDescarga}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="d82711d2" id="viagem-statuscustodescarga-field" data-th-classappend="${#fields.hasErrors('statusCustoDescarga')}? 'has-error has-feedback'" data-th-class="form-group">
+    <label for="statusCustoDescarga" class="col-md-6 control-label" data-th-text="#{label_viagem_statuscustodescarga}">statusCustoDescarga</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{statusCustoDescarga}" class="form-control dropdown-select-simple" data-allow-clear="false" data-th-attr="data-placeholder=#{info_select_an_option}">
+         <option data-th-each="item : ${statusCustoDescarga}" data-th-value="${item}" data-th-text="${{item}}">Value</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('statusCustoDescarga')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('statusCustoDescarga')}" aria-hidden="true"></span>
+      <span id="statusCustoDescarga-error" class="help-block" data-th-if="${#fields.hasErrors('statusCustoDescarga')}" data-th-errors="*{statusCustoDescarga}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<script type="text/javascript">
+    	function reset_sect_motivoNegativaDescarga(){
+      
+      var data = {
+         id: '',
+         text: ''
+     };
+      
+     // Set the value, creating a new option if necessary
+     if ($('#motivoNegativaDescarga').find("option[value='" + data.id + "']").length) {
+         $('#motivoNegativaDescarga').val(data.id).trigger('change');
+     } else { 
+         // Create a DOM Option and pre-select by default
+         var newOption = new Option(data.text, data.id, true, true);
+         // Append it to the select
+         $('#motivoNegativaDescarga').append(newOption).trigger('change');
+     } 
+    	}
+</script>
+<div class="form-group has-error has-feedback" data-z="8eff15ec" id="viagem-motivonegativadescarga-field" data-th-classappend="${#fields.hasErrors('motivoNegativaDescarga')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('MotivosNegativasDescargasCollectionThymeleafController')}">
+    <label for="motivoNegativaDescarga" class="col-md-6 control-label motivoNegativaDescarga" data-th-text="#{label_viagem_motivonegativadescarga}">MotivoNegativaDescarga</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{motivoNegativaDescarga}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_motivoNegativaDescarga()">
+          <option data-th-unless="*{motivoNegativaDescarga} == null" data-th-value="*{motivoNegativaDescarga.id}" data-th-text="*{{motivoNegativaDescarga}}" selected="selected">MotivoNegativaDescarga</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('motivoNegativaDescarga')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('motivoNegativaDescarga')}" aria-hidden="true"></span>
+      <span id="motivoNegativaDescarga-error" class="help-block" data-th-if="${#fields.hasErrors('motivoNegativaDescarga')}" data-th-errors="*{motivoNegativaDescarga}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="da90e5ac" id="viagem-statusdiaria-field" data-th-classappend="${#fields.hasErrors('statusDiaria')}? 'has-error has-feedback'" data-th-class="form-group">
+    <label for="statusDiaria" class="col-md-6 control-label" data-th-text="#{label_viagem_statusdiaria}">statusDiaria</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{statusDiaria}" class="form-control dropdown-select-simple" data-allow-clear="false" data-th-attr="data-placeholder=#{info_select_an_option}">
+         <option data-th-each="item : ${statusDiaria}" data-th-value="${item}" data-th-text="${{item}}">Value</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('statusDiaria')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('statusDiaria')}" aria-hidden="true"></span>
+      <span id="statusDiaria-error" class="help-block" data-th-if="${#fields.hasErrors('statusDiaria')}" data-th-errors="*{statusDiaria}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<script type="text/javascript">
+    	function reset_sect_motivoNegativaDiaria(){
+      
+      var data = {
+         id: '',
+         text: ''
+     };
+      
+     // Set the value, creating a new option if necessary
+     if ($('#motivoNegativaDiaria').find("option[value='" + data.id + "']").length) {
+         $('#motivoNegativaDiaria').val(data.id).trigger('change');
+     } else { 
+         // Create a DOM Option and pre-select by default
+         var newOption = new Option(data.text, data.id, true, true);
+         // Append it to the select
+         $('#motivoNegativaDiaria').append(newOption).trigger('change');
+     } 
+    	}
+</script>
+<div class="form-group has-error has-feedback" data-z="1d3b36ec" id="viagem-motivonegativadiaria-field" data-th-classappend="${#fields.hasErrors('motivoNegativaDiaria')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('MotivosNegativasDiariasCollectionThymeleafController')}">
+    <label for="motivoNegativaDiaria" class="col-md-6 control-label motivoNegativaDiaria" data-th-text="#{label_viagem_motivonegativadiaria}">MotivoNegativaDiaria</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{motivoNegativaDiaria}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_motivoNegativaDiaria()">
+          <option data-th-unless="*{motivoNegativaDiaria} == null" data-th-value="*{motivoNegativaDiaria.id}" data-th-text="*{{motivoNegativaDiaria}}" selected="selected">MotivoNegativaDiaria</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('motivoNegativaDiaria')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('motivoNegativaDiaria')}" aria-hidden="true"></span>
+      <span id="motivoNegativaDiaria-error" class="help-block" data-th-if="${#fields.hasErrors('motivoNegativaDiaria')}" data-th-errors="*{motivoNegativaDiaria}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="f8d66892" id="viagem-devolucao-field" data-th-classappend="${#fields.hasErrors('devolucao')}? 'has-error has-feedback'" data-th-class="form-group">
+    <label for="devolucao" class="col-md-6 control-label" data-th-text="#{label_viagem_devolucao}">devolucao</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{devolucao}" class="form-control dropdown-select-simple" data-allow-clear="false" data-th-attr="data-placeholder=#{info_select_an_option}">
+         <option data-th-each="item : ${devolucao}" data-th-value="${item}" data-th-text="${{item}}">Value</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('devolucao')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('devolucao')}" aria-hidden="true"></span>
+      <span id="devolucao-error" class="help-block" data-th-if="${#fields.hasErrors('devolucao')}" data-th-errors="*{devolucao}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="ae0a874c" id="viagem-observacaocallcenter-field" data-th-classappend="${#fields.hasErrors('observacaoCallCenter')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="observacaoCallCenter" class="col-md-6 control-label" data-th-text="#{label_viagem_observacaocallcenter}">observacaoCallCenter</label>
+  <div class="col-md-6">
+    <textarea id="observacaoCallCenter" name="observacaoCallCenter" data-th-text="*{{observacaoCallCenter}}" class="form-control" placeholder="observacaoCallCenter" data-th-placeholder="#{label_viagem_observacaocallcenter}" data-toggle="tooltip" aria-describedby="observacaoCallCenterStatus"></textarea>
+  <span data-th-classappend="${#fields.hasErrors('observacaoCallCenter')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('observacaoCallCenter')}" aria-hidden="true"></span>
+      <span id="observacaoCallCenter-error" class="help-block" data-th-if="${#fields.hasErrors('observacaoCallCenter')}" data-th-errors="*{observacaoCallCenter}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+				       	    	<input type="hidden" name="usuarioCallCenter" id="usuarioCallCenter" data-th-value="${#authentication.getPrincipal().getUserId()}" />
+				       	    </div>
+				                  </div>
+				                </div>
+				              </div>
+				              <!-- Logística reversa -->
+				                <div class="panel panel-default" sec:authorize="hasRole('/viagens_logística_reversa')">
+				                  <div class="row">
+				                   <div class=" col-md-6"> <h2 data-th-title="#{label_viagem_Logística_reversa}">Logística reversa</h2> </div>
+				                    <div class=" col-md-12">
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-chegadalogisticareversa-field" data-z="61dee92" data-th-classappend="${#fields.hasErrors('chegadaLogisticaReversa')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="chegadaLogisticaReversa" class="col-md-6 control-label" data-th-text="#{label_viagem_chegadalogisticareversa}">chegadaLogisticaReversa</label>
+  <div class="col-md-6">
+    <input id="chegadaLogisticaReversa" name="chegadaLogisticaReversa" data-th-value="*{{chegadaLogisticaReversa}}" type="text" class="form-control datetimepicker" placeholder="chegadaLogisticaReversa" data-th-placeholder="#{label_viagem_chegadalogisticareversa}" data-th-attr="data-dateformat=${chegadaLogisticaReversa_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('chegadaLogisticaReversa')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('chegadaLogisticaReversa')}" aria-hidden="true"></span>
+     <span id="chegadaLogisticaReversa-error" class="help-block" data-th-if="${#fields.hasErrors('chegadaLogisticaReversa')}" data-th-errors="*{chegadaLogisticaReversa}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("chegadaLogisticaReversa").classList.remove('datetimepicker');
+		 	document.getElementById("chegadaLogisticaReversa").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-agendareversa-field" data-z="e2209a72" data-th-classappend="${#fields.hasErrors('agendaReversa')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="agendaReversa" class="col-md-6 control-label" data-th-text="#{label_viagem_agendareversa}">agendaReversa</label>
+  <div class="col-md-6">
+    <input id="agendaReversa" name="agendaReversa" data-th-value="*{{agendaReversa}}" type="text" class="form-control datetimepicker" placeholder="agendaReversa" data-th-placeholder="#{label_viagem_agendareversa}" data-th-attr="data-dateformat=${agendaReversa_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('agendaReversa')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('agendaReversa')}" aria-hidden="true"></span>
+     <span id="agendaReversa-error" class="help-block" data-th-if="${#fields.hasErrors('agendaReversa')}" data-th-errors="*{agendaReversa}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("agendaReversa").classList.remove('datetimepicker');
+		 	document.getElementById("agendaReversa").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<script type="text/javascript">
+    	function reset_sect_motoristaReversa(){
+      
+      var data = {
+         id: '',
+         text: ''
+     };
+      
+     // Set the value, creating a new option if necessary
+     if ($('#motoristaReversa').find("option[value='" + data.id + "']").length) {
+         $('#motoristaReversa').val(data.id).trigger('change');
+     } else { 
+         // Create a DOM Option and pre-select by default
+         var newOption = new Option(data.text, data.id, true, true);
+         // Append it to the select
+         $('#motoristaReversa').append(newOption).trigger('change');
+     } 
+    	}
+</script>
+<div class="form-group has-error has-feedback" data-z="439070ac" id="viagem-motoristareversa-field" data-th-classappend="${#fields.hasErrors('motoristaReversa')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('MotoristasCollectionThymeleafController')}">
+    <label for="motoristaReversa" class="col-md-6 control-label motoristaReversa" data-th-text="#{label_viagem_motoristareversa}">Motorista</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{motoristaReversa}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_motoristaReversa()">
+          <option data-th-unless="*{motoristaReversa} == null" data-th-value="*{motoristaReversa.id}" data-th-text="*{{motoristaReversa}}" selected="selected">Motorista</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('motoristaReversa')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('motoristaReversa')}" aria-hidden="true"></span>
+      <span id="motoristaReversa-error" class="help-block" data-th-if="${#fields.hasErrors('motoristaReversa')}" data-th-errors="*{motoristaReversa}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<script type="text/javascript">
+    	function reset_sect_cavaloReversa(){
+      
+      var data = {
+         id: '',
+         text: ''
+     };
+      
+     // Set the value, creating a new option if necessary
+     if ($('#cavaloReversa').find("option[value='" + data.id + "']").length) {
+         $('#cavaloReversa').val(data.id).trigger('change');
+     } else { 
+         // Create a DOM Option and pre-select by default
+         var newOption = new Option(data.text, data.id, true, true);
+         // Append it to the select
+         $('#cavaloReversa').append(newOption).trigger('change');
+     } 
+    	}
+</script>
+<div class="form-group has-error has-feedback" data-z="9e5e7272" id="viagem-cavaloreversa-field" data-th-classappend="${#fields.hasErrors('cavaloReversa')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('VeiculosCollectionThymeleafController')}">
+    <label for="cavaloReversa" class="col-md-6 control-label cavaloReversa" data-th-text="#{label_viagem_cavaloreversa}">Veiculo</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{cavaloReversa}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_cavaloReversa()">
+          <option data-th-unless="*{cavaloReversa} == null" data-th-value="*{cavaloReversa.id}" data-th-text="*{{cavaloReversa}}" selected="selected">Veiculo</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('cavaloReversa')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('cavaloReversa')}" aria-hidden="true"></span>
+      <span id="cavaloReversa-error" class="help-block" data-th-if="${#fields.hasErrors('cavaloReversa')}" data-th-errors="*{cavaloReversa}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<script type="text/javascript">
+    	function reset_sect_carretaReversa1(){
+      
+      var data = {
+         id: '',
+         text: ''
+     };
+      
+     // Set the value, creating a new option if necessary
+     if ($('#carretaReversa1').find("option[value='" + data.id + "']").length) {
+         $('#carretaReversa1').val(data.id).trigger('change');
+     } else { 
+         // Create a DOM Option and pre-select by default
+         var newOption = new Option(data.text, data.id, true, true);
+         // Append it to the select
+         $('#carretaReversa1').append(newOption).trigger('change');
+     } 
+    	}
+</script>
+<div class="form-group has-error has-feedback" data-z="84bb2b52" id="viagem-carretareversa1-field" data-th-classappend="${#fields.hasErrors('carretaReversa1')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('VeiculosCollectionThymeleafController')}">
+    <label for="carretaReversa1" class="col-md-6 control-label carretaReversa1" data-th-text="#{label_viagem_carretareversa1}">Veiculo</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{carretaReversa1}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_carretaReversa1()">
+          <option data-th-unless="*{carretaReversa1} == null" data-th-value="*{carretaReversa1.id}" data-th-text="*{{carretaReversa1}}" selected="selected">Veiculo</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('carretaReversa1')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('carretaReversa1')}" aria-hidden="true"></span>
+      <span id="carretaReversa1-error" class="help-block" data-th-if="${#fields.hasErrors('carretaReversa1')}" data-th-errors="*{carretaReversa1}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<script type="text/javascript">
+    	function reset_sect_carretaReversa2(){
+      
+      var data = {
+         id: '',
+         text: ''
+     };
+      
+     // Set the value, creating a new option if necessary
+     if ($('#carretaReversa2').find("option[value='" + data.id + "']").length) {
+         $('#carretaReversa2').val(data.id).trigger('change');
+     } else { 
+         // Create a DOM Option and pre-select by default
+         var newOption = new Option(data.text, data.id, true, true);
+         // Append it to the select
+         $('#carretaReversa2').append(newOption).trigger('change');
+     } 
+    	}
+</script>
+<div class="form-group has-error has-feedback" data-z="84bb2f32" id="viagem-carretareversa2-field" data-th-classappend="${#fields.hasErrors('carretaReversa2')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('VeiculosCollectionThymeleafController')}">
+    <label for="carretaReversa2" class="col-md-6 control-label carretaReversa2" data-th-text="#{label_viagem_carretareversa2}">Veiculo</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{carretaReversa2}" class="form-control dropdown-select-ajax" data-allow-clear="false" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}" onclick="reset_sect_carretaReversa2()">
+          <option data-th-unless="*{carretaReversa2} == null" data-th-value="*{carretaReversa2.id}" data-th-text="*{{carretaReversa2}}" selected="selected">Veiculo</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('carretaReversa2')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('carretaReversa2')}" aria-hidden="true"></span>
+      <span id="carretaReversa2-error" class="help-block" data-th-if="${#fields.hasErrors('carretaReversa2')}" data-th-errors="*{carretaReversa2}">Error message.</span>
+    </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" id="viagem-fimlogisticareversa-field" data-z="d43b39b2" data-th-classappend="${#fields.hasErrors('fimLogisticaReversa')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="fimLogisticaReversa" class="col-md-6 control-label" data-th-text="#{label_viagem_fimlogisticareversa}">fimLogisticaReversa</label>
+  <div class="col-md-6">
+    <input id="fimLogisticaReversa" name="fimLogisticaReversa" data-th-value="*{{fimLogisticaReversa}}" type="text" class="form-control datetimepicker" placeholder="fimLogisticaReversa" data-th-placeholder="#{label_viagem_fimlogisticareversa}" data-th-attr="data-dateformat=${fimLogisticaReversa_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('fimLogisticaReversa')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('fimLogisticaReversa')}" aria-hidden="true"></span>
+     <span id="fimLogisticaReversa-error" class="help-block" data-th-if="${#fields.hasErrors('fimLogisticaReversa')}" data-th-errors="*{fimLogisticaReversa}">Error message.</span>
+  </div>
+</div>
+<script type="text/javascript">
+	if(typeof window.orientation !== 'undefined') {
+		 	document.getElementById("fimLogisticaReversa").classList.remove('datetimepicker');
+		 	document.getElementById("fimLogisticaReversa").classList.add("datetime-local");
+	} 
+</script>
+				       	    </div>
+				       	    <div class="col-md-6">
+<div class="form-group has-error has-feedback" data-z="ee9cfe92" id="viagem-observacaoreversa-field" data-th-classappend="${#fields.hasErrors('observacaoReversa')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="observacaoReversa" class="col-md-6 control-label" data-th-text="#{label_viagem_observacaoreversa}">observacaoReversa</label>
+  <div class="col-md-6">
+    <textarea id="observacaoReversa" name="observacaoReversa" data-th-text="*{{observacaoReversa}}" class="form-control" placeholder="observacaoReversa" data-th-placeholder="#{label_viagem_observacaoreversa}" data-toggle="tooltip" aria-describedby="observacaoReversaStatus"></textarea>
+  <span data-th-classappend="${#fields.hasErrors('observacaoReversa')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('observacaoReversa')}" aria-hidden="true"></span>
+      <span id="observacaoReversa-error" class="help-block" data-th-if="${#fields.hasErrors('observacaoReversa')}" data-th-errors="*{observacaoReversa}">Error message.</span>
+  </div>
+</div>
+				       	    </div>
+				       	    <div class="col-md-6">
+				       	    	<input type="hidden" name="usuarioLogisticaReversa" id="usuarioLogisticaReversa" data-th-value="${#authentication.getPrincipal().getUserId()}" />
+				       	    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+              <!-- buttons form -->
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="pull-right">
+                    <button type="submit" class="btn btn-primary" data-th-text="#{label_save}">Save</button>
+                  </div>
+                  <div class="pull-left">
+					              <a onclick="history.go(-1)" class="btn btn-default" data-th-title="#{label_goBack}">
+					                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					                 <span data-th-text="#{label_back}">Back</span>
+					              </a>
+							</div>
+					<!--
+                  <div class="pull-left">
+                    <button type="reset" class="btn btn-default"
+                      onclick="location.href='list.html'"
+                      data-th-onclick="'location.href=\'' + @{${collectionLink.to('list')}} + '\''"
+                      data-th-text="#{label_reset}">Cancel</button>
+                  </div>
+                  -->
+                </div>
+              </div>
+
+          </form>
+          <!-- /FORM -->
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+
+    <!-- DateTimePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js" data-th-src="@{/webjars/datetimepicker/build/jquery.datetimepicker.full.min.js}"></script>
+    <script src="../../static/public/js/datetimepicker-defaults.js" data-th-src="@{/public/js/datetimepicker-defaults.js}"></script>
+
+    <!-- jquery.inputmask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.1/jquery.inputmask.bundle.min.js" data-th-src="@{/webjars/jquery.inputmask/min/jquery.inputmask.bundle.min.js}"></script>
+    <script type="text/javascript" data-th-inline="javascript">
+					(function(jQuery) {
+						jQuery(document)
+								.ready(
+										function() {
+											Inputmask
+													.extendAliases({
+														'numeric' : {
+															'groupSeparator' : /*[[#{label_inputmask_groupSeparator}]]*/'.',
+															'radixPoint' : /*[[#{label_inputmask_radixPoint}]]*/','
+														},
+														'currency' : {
+															'prefix' : /*[[#{label_inputmask_prefix}]]*/'',
+															'suffix' : /*[[#{label_inputmask_suffix}]]*/' €'
+														}
+													});
+										});
+					})(jQuery);
+  		</script>
+    <script src="../../static/public/js/inputmask-defaults.js" data-th-src="@{/public/js/inputmask-defaults.js}"></script>
+
+    <!-- JQuery Validation -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js" data-th-src="@{/webjars/jquery-validation/dist/jquery.validate.min.js}">
+		  </script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js" data-th-src="@{/webjars/jquery-validation/dist/additional-methods.min.js}">
+			</script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js" data-th-src="@{/webjars/jquery-validation/src/localization/messages_}+${#locale.language}+'.js'" data-th-if="${#locale.language} != 'en'">
+			</script>
+    <script src="../../static/public/js/validation-defaults.js" data-th-src="@{/public/js/validation-defaults.js}">
+			</script>
+
+    <script type="text/javascript" data-th-inline="javascript">
+					(function(jQuery) {
+						jQuery(document)
+								.ready(
+										function() {
+											jQuery
+													.extend(
+															jQuery.validator.messages,
+															{
+																'dateformat' : /*[[#{error_invalid_date}]]*/'Please enter a correct date/time',
+																'inputmask' : /*[[#{error_invalid_maskValue}]]*/'Please enter a valid value',
+															});
+										});
+					})(jQuery);
+		  </script>
+
+    </div>
+
+  </body>
+
+</html>

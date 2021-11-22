@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_viagem})}|">Show Viagem - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${viagem}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="viagem-embarcador-field" data-z="6538fd0c">
+            	      <strong data-th-text="#{label_viagem_embarcador}">embarcador</strong>
+                    <span data-th-text="*{{embarcador}}">embarcadorValue</span>
+         	        </li>
+                  <li id="viagem-cidadeorigem-field" data-z="c197700c">
+            	      <strong data-th-text="#{label_viagem_cidadeorigem}">cidadeOrigem</strong>
+                    <span data-th-text="*{{cidadeOrigem}}">cidadeOrigemValue</span>
+         	        </li>
+                  <li id="viagem-datalancamento-field" data-z="815769ec">
+            	      <strong data-th-text="#{label_viagem_datalancamento}">dataLancamento</strong>
+                    <span data-th-text="*{{dataLancamento}}">dataLancamentoValue</span>
+         	        </li>
+                  <li id="viagem-identificacaotransporte-field" data-z="f429eed2">
+            	      <strong data-th-text="#{label_viagem_identificacaotransporte}">identificacaoTransporte</strong>
+                    <span data-th-text="*{{identificacaoTransporte}}">identificacaoTransporteValue</span>
+         	        </li>
+                  <li id="viagem-destino-field" data-z="1c13ce12">
+            	      <strong data-th-text="#{label_viagem_destino}">destino</strong>
+                    <span data-th-text="*{{destino}}">destinoValue</span>
+         	        </li>
+                  <li id="viagem-agenda-field" data-z="23ee85cc">
+            	      <strong data-th-text="#{label_viagem_agenda}">agenda</strong>
+                    <span data-th-text="*{{agenda}}">agendaValue</span>
+         	        </li>
+                  <li id="viagem-motorista-field" data-z="5c25dcd2">
+            	      <strong data-th-text="#{label_viagem_motorista}">motorista</strong>
+                    <span data-th-text="*{{motorista}}">motoristaValue</span>
+         	        </li>
+                  <li id="viagem-cavalo-field" data-z="3313adcc">
+            	      <strong data-th-text="#{label_viagem_cavalo}">cavalo</strong>
+                    <span data-th-text="*{{cavalo}}">cavaloValue</span>
+         	        </li>
+                  <li id="viagem-carreta1-field" data-z="dc7c246c">
+            	      <strong data-th-text="#{label_viagem_carreta1}">carreta1</strong>
+                    <span data-th-text="*{{carreta1}}">carreta1Value</span>
+         	        </li>
+                  <li id="viagem-carreta2-field" data-z="dc7c284c">
+            	      <strong data-th-text="#{label_viagem_carreta2}">carreta2</strong>
+                    <span data-th-text="*{{carreta2}}">carreta2Value</span>
+         	        </li>
+                  <li id="viagem-inicioestimado-field" data-z="8dfb7d8c">
+            	      <strong data-th-text="#{label_viagem_inicioestimado}">inicioEstimado</strong>
+                    <span data-th-text="*{{inicioEstimado}}">inicioEstimadoValue</span>
+         	        </li>
+                  <li id="viagem-usuarioexpedicao-field" data-z="9949b82c">
+            	      <strong data-th-text="#{label_viagem_usuarioexpedicao}">usuarioExpedicao</strong>
+                    <span data-th-text="*{{usuarioExpedicao}}">usuarioExpedicaoValue</span>
+         	        </li>
+                  <li id="viagem-inicioreal-field" data-z="88de08c">
+            	      <strong data-th-text="#{label_viagem_inicioreal}">inicioReal</strong>
+                    <span data-th-text="*{{inicioReal}}">inicioRealValue</span>
+         	        </li>
+                  <li id="viagem-statusviagem-field" data-z="dff4834c">
+            	      <strong data-th-text="#{label_viagem_statusviagem}">statusViagem</strong>
+                    <span data-th-text="*{{statusViagem}}">statusViagemValue</span>
+         	        </li>
+                  <li id="viagem-horaparadapostofiscal-field" data-z="a0471a72">
+            	      <strong data-th-text="#{label_viagem_horaparadapostofiscal}">horaParadaPostoFiscal</strong>
+                    <span data-th-text="*{{horaParadaPostoFiscal}}">horaParadaPostoFiscalValue</span>
+         	        </li>
+                  <li id="viagem-horasaidapostofiscal-field" data-z="95fa4b4c">
+            	      <strong data-th-text="#{label_viagem_horasaidapostofiscal}">horaSaidaPostoFiscal</strong>
+                    <span data-th-text="*{{horaSaidaPostoFiscal}}">horaSaidaPostoFiscalValue</span>
+         	        </li>
+                  <li id="viagem-chegadacliente-field" data-z="b93671cc">
+            	      <strong data-th-text="#{label_viagem_chegadacliente}">chegadaCliente</strong>
+                    <span data-th-text="*{{chegadaCliente}}">chegadaClienteValue</span>
+         	        </li>
+                  <li id="viagem-motivoperdaagenda-field" data-z="75aacc92">
+            	      <strong data-th-text="#{label_viagem_motivoperdaagenda}">motivoPerdaAgenda</strong>
+                    <span data-th-text="*{{motivoPerdaAgenda}}">motivoPerdaAgendaValue</span>
+         	        </li>
+                  <li id="viagem-iniciodescarga-field" data-z="42ca724c">
+            	      <strong data-th-text="#{label_viagem_iniciodescarga}">inicioDescarga</strong>
+                    <span data-th-text="*{{inicioDescarga}}">inicioDescargaValue</span>
+         	        </li>
+                  <li id="viagem-fimdescarga-field" data-z="21ce34f2">
+            	      <strong data-th-text="#{label_viagem_fimdescarga}">fimDescarga</strong>
+                    <span data-th-text="*{{fimDescarga}}">fimDescargaValue</span>
+         	        </li>
+                  <li id="viagem-fimviagem-field" data-z="d695fd12">
+            	      <strong data-th-text="#{label_viagem_fimviagem}">fimViagem</strong>
+                    <span data-th-text="*{{fimViagem}}">fimViagemValue</span>
+         	        </li>
+                  <li id="viagem-despesadescarga-field" data-z="c9c1ae12">
+            	      <strong data-th-text="#{label_viagem_despesadescarga}">despesaDescarga</strong>
+                    <span data-th-text="*{{despesaDescarga}}">despesaDescargaValue</span>
+         	        </li>
+                  <li id="viagem-statuscustodescarga-field" data-z="d82711d2">
+            	      <strong data-th-text="#{label_viagem_statuscustodescarga}">statusCustoDescarga</strong>
+                    <span data-th-text="*{{statusCustoDescarga}}">statusCustoDescargaValue</span>
+         	        </li>
+                  <li id="viagem-motivonegativadescarga-field" data-z="8eff15ec">
+            	      <strong data-th-text="#{label_viagem_motivonegativadescarga}">motivoNegativaDescarga</strong>
+                    <span data-th-text="*{{motivoNegativaDescarga}}">motivoNegativaDescargaValue</span>
+         	        </li>
+                  <li id="viagem-statusdiaria-field" data-z="da90e5ac">
+            	      <strong data-th-text="#{label_viagem_statusdiaria}">statusDiaria</strong>
+                    <span data-th-text="*{{statusDiaria}}">statusDiariaValue</span>
+         	        </li>
+                  <li id="viagem-motivonegativadiaria-field" data-z="1d3b36ec">
+            	      <strong data-th-text="#{label_viagem_motivonegativadiaria}">motivoNegativaDiaria</strong>
+                    <span data-th-text="*{{motivoNegativaDiaria}}">motivoNegativaDiariaValue</span>
+         	        </li>
+                  <li id="viagem-devolucao-field" data-z="f8d66892">
+            	      <strong data-th-text="#{label_viagem_devolucao}">devolucao</strong>
+                    <span data-th-text="*{{devolucao}}">devolucaoValue</span>
+         	        </li>
+                  <li id="viagem-observacaocallcenter-field" data-z="ae0a874c">
+            	      <strong data-th-text="#{label_viagem_observacaocallcenter}">observacaoCallCenter</strong>
+                    <span data-th-text="*{{observacaoCallCenter}}">observacaoCallCenterValue</span>
+         	        </li>
+                  <li id="viagem-usuariocallcenter-field" data-z="6775eb72">
+            	      <strong data-th-text="#{label_viagem_usuariocallcenter}">usuarioCallCenter</strong>
+                    <span data-th-text="*{{usuarioCallCenter}}">usuarioCallCenterValue</span>
+         	        </li>
+                  <li id="viagem-chegadalogisticareversa-field" data-z="61dee92">
+            	      <strong data-th-text="#{label_viagem_chegadalogisticareversa}">chegadaLogisticaReversa</strong>
+                    <span data-th-text="*{{chegadaLogisticaReversa}}">chegadaLogisticaReversaValue</span>
+         	        </li>
+                  <li id="viagem-agendareversa-field" data-z="e2209a72">
+            	      <strong data-th-text="#{label_viagem_agendareversa}">agendaReversa</strong>
+                    <span data-th-text="*{{agendaReversa}}">agendaReversaValue</span>
+         	        </li>
+                  <li id="viagem-motoristareversa-field" data-z="439070ac">
+            	      <strong data-th-text="#{label_viagem_motoristareversa}">motoristaReversa</strong>
+                    <span data-th-text="*{{motoristaReversa}}">motoristaReversaValue</span>
+         	        </li>
+                  <li id="viagem-cavaloreversa-field" data-z="9e5e7272">
+            	      <strong data-th-text="#{label_viagem_cavaloreversa}">cavaloReversa</strong>
+                    <span data-th-text="*{{cavaloReversa}}">cavaloReversaValue</span>
+         	        </li>
+                  <li id="viagem-carretareversa1-field" data-z="84bb2b52">
+            	      <strong data-th-text="#{label_viagem_carretareversa1}">carretaReversa1</strong>
+                    <span data-th-text="*{{carretaReversa1}}">carretaReversa1Value</span>
+         	        </li>
+                  <li id="viagem-carretareversa2-field" data-z="84bb2f32">
+            	      <strong data-th-text="#{label_viagem_carretareversa2}">carretaReversa2</strong>
+                    <span data-th-text="*{{carretaReversa2}}">carretaReversa2Value</span>
+         	        </li>
+                  <li id="viagem-fimlogisticareversa-field" data-z="d43b39b2">
+            	      <strong data-th-text="#{label_viagem_fimlogisticareversa}">fimLogisticaReversa</strong>
+                    <span data-th-text="*{{fimLogisticaReversa}}">fimLogisticaReversaValue</span>
+         	        </li>
+                  <li id="viagem-observacaoreversa-field" data-z="ee9cfe92">
+            	      <strong data-th-text="#{label_viagem_observacaoreversa}">observacaoReversa</strong>
+                    <span data-th-text="*{{observacaoReversa}}">observacaoReversaValue</span>
+         	        </li>
+                  <li id="viagem-usuariologisticareversa-field" data-z="683f93b2">
+            	      <strong data-th-text="#{label_viagem_usuariologisticareversa}">usuarioLogisticaReversa</strong>
+                    <span data-th-text="*{{usuarioLogisticaReversa}}">usuarioLogisticaReversaValue</span>
+         	        </li>
+                  <li id="viagem-modifiedby-field" data-z="43d170ec">
+            	      <strong data-th-text="#{label_viagem_modifiedby}">modifiedBy</strong>
+                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+         	        </li>
+                  <li id="viagem-createddate-field" data-z="9e30cef2">
+            	      <strong data-th-text="#{label_viagem_createddate}">createdDate</strong>
+                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+         	        </li>
+                  <li id="viagem-createdby-field" data-z="a61fd692">
+            	      <strong data-th-text="#{label_viagem_createdby}">createdBy</strong>
+                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+         	        </li>
+                  <li id="viagem-modifieddate-field" data-z="95e53acc">
+            	      <strong data-th-text="#{label_viagem_modifieddate}">modifiedDate</strong>
+                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

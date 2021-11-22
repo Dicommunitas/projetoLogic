@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+  <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_cidade})}|">Show Cidade - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content" data-th-object="${cidade}">
+        <div class="container-fluid content">
+
+          <!-- CONTENT -->
+          <h1 data-th-text="#{label_show_entity(#{label_cidade})}">Show Cidade</h1>
+
+            <div id="mainEntityFieldSet">
+              <h2 data-th-text="#{label_data_entity(#{label_cidade})}">Cidade data</h2>
+              <ul class="list-unstyled" id="containerFields">
+                <div class="block-item">
+                  <div class="row">
+                   <div class=" col-md-6"><h2> </h2></div>
+                    <div class=" col-md-12">
+       
+	       	    <div class="col-md-6">
+		                  <li id="cidade-nome-field" data-z="9acd9bcf">
+		            	      <strong data-th-text="#{label_cidade_nome}">nome</strong>
+		                    <span data-th-text="*{{nome}}">nomeValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cidade-createddate-field" data-z="9a543d2f">
+		            	      <strong data-th-text="#{label_cidade_createddate}">createdDate</strong>
+		                    <span data-th-text="*{{createdDate}}">createdDateValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cidade-createdby-field" data-z="3fd3b00f">
+		            	      <strong data-th-text="#{label_cidade_createdby}">createdBy</strong>
+		                    <span data-th-text="*{{createdBy}}">createdByValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cidade-modifieddate-field" data-z="1e2f942f">
+		            	      <strong data-th-text="#{label_cidade_modifieddate}">modifiedDate</strong>
+		                    <span data-th-text="*{{modifiedDate}}">modifiedDateValue</span>
+		         	        </li>
+	            </div> 	
+       
+	       	    <div class="col-md-6">
+		                  <li id="cidade-modifiedby-field" data-z="e098c70f">
+		            	      <strong data-th-text="#{label_cidade_modifiedby}">modifiedBy</strong>
+		                    <span data-th-text="*{{modifiedBy}}">modifiedByValue</span>
+		         	        </li>
+	            </div> 	
+                  </div>
+                </div>
+              </div>
+              </ul>
+            </div>
+          <div class="clearfix">
+            <div class="pull-right">
+             <a id="Cidade_edit" href="edit.html" class="btn btn-primary" data-th-title="#{label_goEdit}" data-th-href="${@linkBuilder.of('CidadesItemThymeleafController').to('editForm').with('cidade', cidade.id)}" data-th-text="#{label_edit}">Edit</a>
+            </div>
+                  <div class="pull-left">
+					              <a onclick="history.go(-1)" class="btn btn-default" data-th-title="#{label_goBack}">
+					                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					                 <span data-th-text="#{label_back}">Back</span>
+					              </a>
+							</div>
+					<!--
+            <div class="pull-left">
+              <a id="Cidade_list" href="list.html" class="btn btn-default"
+                 data-th-title="#{label_goBack}"
+  	             data-th-href="${@linkBuilder.of('CidadesCollectionThymeleafController').to('list')}">
+  	             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  	             <span data-th-text="#{label_back}">Back</span>
+  	          </a>
+            </div>
+                  -->
+          </div>
+
+	        </div>
+	        
+	        
+       
+       
+        </section></div>
+
+      
+      <!-- /CONTENT -->
+  
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>
